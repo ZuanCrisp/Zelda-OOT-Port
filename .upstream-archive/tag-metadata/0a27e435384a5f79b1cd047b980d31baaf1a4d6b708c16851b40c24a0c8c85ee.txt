@@ -1,0 +1,6 @@
+Original tag name: less-stutter
+Original tag object: 1c7c9c7090f0b637494ec49d84e5f17dc87e4558
+Original target commit: 1c7c9c7090f0b637494ec49d84e5f17dc87e4558
+Original object type: commit
+
+Lightweight tag; the original target commit is recorded above.
