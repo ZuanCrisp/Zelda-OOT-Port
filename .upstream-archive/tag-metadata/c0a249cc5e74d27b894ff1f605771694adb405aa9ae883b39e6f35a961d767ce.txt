@@ -1,0 +1,6 @@
+Original tag name: builder-errors
+Original tag object: 37b2268ed8bcb38e1dca3b6f7083aed1776c48f7
+Original target commit: 37b2268ed8bcb38e1dca3b6f7083aed1776c48f7
+Original object type: commit
+
+Lightweight tag; the original target commit is recorded above.
