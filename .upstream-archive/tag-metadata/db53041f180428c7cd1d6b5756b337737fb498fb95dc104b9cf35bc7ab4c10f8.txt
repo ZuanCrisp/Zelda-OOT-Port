@@ -1,0 +1,6 @@
+Original tag name: foliage-linux-updater
+Original tag object: 170ce53ca3d69309b3f5151a334136be8b4c38d6
+Original target commit: 170ce53ca3d69309b3f5151a334136be8b4c38d6
+Original object type: commit
+
+Lightweight tag; the original target commit is recorded above.
