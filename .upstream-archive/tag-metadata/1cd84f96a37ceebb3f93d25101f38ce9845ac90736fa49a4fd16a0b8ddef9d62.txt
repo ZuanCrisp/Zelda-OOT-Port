@@ -1,0 +1,6 @@
+Original tag name: movie-sync
+Original tag object: 44abdcdc58fc5a3ec347cad6f5a43eedab1bd530
+Original target commit: 44abdcdc58fc5a3ec347cad6f5a43eedab1bd530
+Original object type: commit
+
+Lightweight tag; the original target commit is recorded above.
