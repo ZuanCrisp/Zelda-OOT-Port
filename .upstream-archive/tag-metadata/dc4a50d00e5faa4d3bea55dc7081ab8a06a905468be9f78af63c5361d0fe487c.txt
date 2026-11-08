@@ -1,0 +1,6 @@
+Original tag name: new-installer
+Original tag object: ef2e1c4dccf47e5b92d8be22ba7a7cbe7bc9998a
+Original target commit: ef2e1c4dccf47e5b92d8be22ba7a7cbe7bc9998a
+Original object type: commit
+
+Lightweight tag; the original target commit is recorded above.
