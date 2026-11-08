@@ -1,0 +1,6 @@
+Original tag name: low-vram
+Original tag object: 53af3384509c4080f41cb277ef9213f7d02b3f71
+Original target commit: 53af3384509c4080f41cb277ef9213f7d02b3f71
+Original object type: commit
+
+Lightweight tag; the original target commit is recorded above.
