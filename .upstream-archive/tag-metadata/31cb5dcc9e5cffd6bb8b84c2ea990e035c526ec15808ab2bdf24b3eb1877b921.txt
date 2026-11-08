@@ -1,0 +1,6 @@
+Original tag name: compile-retry
+Original tag object: fa22c2d6a3881ef7ad2807a7bee621306fe24368
+Original target commit: fa22c2d6a3881ef7ad2807a7bee621306fe24368
+Original object type: commit
+
+Lightweight tag; the original target commit is recorded above.
