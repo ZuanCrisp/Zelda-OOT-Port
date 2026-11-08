@@ -1,0 +1,6 @@
+Original tag name: faster-fps
+Original tag object: f992201a7429faa48d28a279736e329fd2e6dca5
+Original target commit: f992201a7429faa48d28a279736e329fd2e6dca5
+Original object type: commit
+
+Lightweight tag; the original target commit is recorded above.
