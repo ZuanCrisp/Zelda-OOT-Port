@@ -1,0 +1,6 @@
+Original tag name: device-lost-fix
+Original tag object: ff10b2d8aaaa147c89d93a49317183e78d9a3368
+Original target commit: ff10b2d8aaaa147c89d93a49317183e78d9a3368
+Original object type: commit
+
+Lightweight tag; the original target commit is recorded above.
