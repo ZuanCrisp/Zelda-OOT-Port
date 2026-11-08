@@ -1,0 +1,6 @@
+Original tag name: ultrawide
+Original tag object: 360172687265954138237105ee2f27336f12e27f
+Original target commit: 360172687265954138237105ee2f27336f12e27f
+Original object type: commit
+
+Lightweight tag; the original target commit is recorded above.
