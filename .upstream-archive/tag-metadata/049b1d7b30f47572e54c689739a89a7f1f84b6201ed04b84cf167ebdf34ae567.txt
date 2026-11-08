@@ -1,0 +1,6 @@
+Original tag name: no-visual-studio
+Original tag object: e40306e14083e1056e3c9f4b86c0e9a84147728d
+Original target commit: e40306e14083e1056e3c9f4b86c0e9a84147728d
+Original object type: commit
+
+Lightweight tag; the original target commit is recorded above.
