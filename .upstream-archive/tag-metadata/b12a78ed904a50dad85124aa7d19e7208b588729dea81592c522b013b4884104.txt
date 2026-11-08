@@ -1,0 +1,6 @@
+Original tag name: fast-updates
+Original tag object: 3f5b0aa505709a5e031382c00ecdc1c9fd95e4ef
+Original target commit: 3f5b0aa505709a5e031382c00ecdc1c9fd95e4ef
+Original object type: commit
+
+Lightweight tag; the original target commit is recorded above.
