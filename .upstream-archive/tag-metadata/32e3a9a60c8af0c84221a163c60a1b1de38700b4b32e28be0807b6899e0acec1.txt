@@ -1,0 +1,6 @@
+Original tag name: honest-eta
+Original tag object: a598b9fcc2cf10955bbc213ab7cf8ea3c6ea2ded
+Original target commit: a598b9fcc2cf10955bbc213ab7cf8ea3c6ea2ded
+Original object type: commit
+
+Lightweight tag; the original target commit is recorded above.
