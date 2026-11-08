@@ -1,0 +1,6 @@
+Original tag name: faster-builds
+Original tag object: 3adfb636a1a4a3fbc892fb01dbf5e745917beac2
+Original target commit: 3adfb636a1a4a3fbc892fb01dbf5e745917beac2
+Original object type: commit
+
+Lightweight tag; the original target commit is recorded above.
