@@ -1,0 +1,12 @@
+Original tag name: v2.0.8-rc.2
+Original tag object: 145a1607aaeef629a3478ff3f28aca651855e645
+Original target commit: c4ea255b44fdc74a8fbcc4755f5128f0230d5450
+Original object type: tag
+
+--- Original annotated tag object body ---
+object c4ea255b44fdc74a8fbcc4755f5128f0230d5450
+type commit
+tag v2.0.8-rc.2
+tagger NotRexed <therealnothingfn@gmail.com> 1794220527 -0500
+
+v2.0.8 release candidate 2
