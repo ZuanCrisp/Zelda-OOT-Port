@@ -1,0 +1,12 @@
+Original tag name: v2.0.10
+Original tag object: 690a3a788f0f34dddbfa3c88fb505575a227d87e
+Original target commit: 7f9daf06d902588476102d6650c600bb84f02ce5
+Original object type: tag
+
+--- Original annotated tag object body ---
+object 7f9daf06d902588476102d6650c600bb84f02ce5
+type commit
+tag v2.0.10
+tagger NotRexed <therealnothingfn@gmail.com> 1794245521 -0500
+
+Hookshot v2.0.10
