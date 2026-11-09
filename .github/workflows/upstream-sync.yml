@@ -51,7 +51,7 @@ jobs:
 
     steps:
       - name: Checkout destination repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           token: ${{ secrets.GH_SYNC_TOKEN || github.token }}
           persist-credentials: true
