@@ -1,0 +1,12 @@
+Original tag name: v2.0.13
+Original tag object: 1a356af0db0f32a7a08884f28e6775c138a48aff
+Original target commit: fbcde13bf1e121f2607bb0a2a0f686c513b31164
+Original object type: tag
+
+--- Original annotated tag object body ---
+object fbcde13bf1e121f2607bb0a2a0f686c513b31164
+type commit
+tag v2.0.13
+tagger NotRexed <therealnothingfn@gmail.com> 1794315579 -0500
+
+v2.0.13: the menu fits the screen; real game speed above a 60 fps cap
