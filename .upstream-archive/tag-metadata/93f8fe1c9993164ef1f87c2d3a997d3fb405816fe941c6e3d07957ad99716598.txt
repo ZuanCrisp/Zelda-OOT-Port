@@ -1,0 +1,12 @@
+Original tag name: v2.0.14
+Original tag object: c54510d7a335537743c30b3a9cf5203c90cbd9e1
+Original target commit: 7f70b922ebdb2bd3d2fb5cf8b6c0f5f0d1ba7124
+Original object type: tag
+
+--- Original annotated tag object body ---
+object 7f70b922ebdb2bd3d2fb5cf8b6c0f5f0d1ba7124
+type commit
+tag v2.0.14
+tagger NotRexed <therealnothingfn@gmail.com> 1794327085 -0500
+
+v2.0.14: HDR menu colours, updates from folders with brackets, FPS counter size
