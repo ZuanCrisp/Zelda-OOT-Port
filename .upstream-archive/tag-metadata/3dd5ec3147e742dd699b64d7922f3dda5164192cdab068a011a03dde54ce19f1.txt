@@ -1,0 +1,14 @@
+Original tag name: v2.0.12
+Original tag object: 6a7799addc8943a15c0de9d622d69ba8a603297f
+Original target commit: 046e37f66fdfee25380edf6f8dc9f44af57fe18e
+Original object type: tag
+
+--- Original annotated tag object body ---
+object 046e37f66fdfee25380edf6f8dc9f44af57fe18e
+type commit
+tag v2.0.12
+tagger NotRexed <therealnothingfn@gmail.com> 1794304833 -0500
+
+Hookshot v2.0.12
+
+Verified 2026-11-10 on an RTX 4060 Ti: verify219 (flash checks, shadows, a simulated 8 GB card, smoothness), the feature proof suite, the DLSS A/B, and the release build's Discord and flash checks; CI green on release/v2.0.12.
