@@ -1,0 +1,6 @@
+Original tag name: nightly
+Original tag object: 828858147553fa066259bca26f1fa339f028d253
+Original target commit: 828858147553fa066259bca26f1fa339f028d253
+Original object type: commit
+
+Lightweight tag; the original target commit is recorded above.
