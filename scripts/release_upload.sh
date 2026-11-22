@@ -97,7 +97,7 @@ if [[ $tag == nightly ]]; then
     advance_nightly "$sha" || exit 0
     # (the same notes from every run: the two platforms' runs write them at different times, and each file names the
     # commit it was built from)
-    notes="The latest development build (Re-Create by ZuanCrisp), built from this repository after every push to main. Each file is named by the commit it was built from (\`Hookshot-<version>-x86_64.AppImage\`, \`Hookshot-<version>-Windows-x64.zip\`; the version is \`git describe\`'s, ending in \`-g<commit>\`). The Windows and Linux builds finish at different times, so while changes are being merged one can be a commit or two behind the other; the \`nightly\` tag is at the newest of them.
+    notes="The latest development build (Re-Create by ZuanCrisp), built from this repository after every push to main. Each file name includes the source version and commit hash. When the checkout has no reachable version tag, the version base comes from \`.release-please-manifest.json\` and is marked as a development build with its commit hash. The Windows and Linux builds finish at different times, so while changes are being merged one can be a commit or two behind the other; the \`nightly\` tag is at the newest of them.
 
 It is untested and may break your saves or settings. For playing, use the [latest release](https://github.com/$GH_REPO/releases/latest).
 

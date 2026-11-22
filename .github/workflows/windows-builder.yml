@@ -99,7 +99,7 @@ jobs:
           if [[ -n $RELEASE_TAG ]]; then
             tag=$RELEASE_TAG
           else
-            tag=$(git describe --tags --long --match 'v[0-9]*' 2>/dev/null || echo "v0.0.0-0-g$(git rev-parse --short HEAD)")
+            tag=$(python -I scripts/build_version.py)
           fi
           echo "TAG=$tag" >> "$GITHUB_ENV"
           echo "VERSION=${tag#v}" >> "$GITHUB_ENV"
