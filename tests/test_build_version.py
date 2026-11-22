@@ -32,7 +32,7 @@ class BuildVersion(unittest.TestCase):
             class Sha:
                 stdout = "abcdef012345\n"
             with patch.object(build_version.subprocess, "run", side_effect=[NoTag(), Sha()]):
-                self.assertEqual(build_version.describe(root), "v2.2.0-rc.1-0-gabcdef01")
+                self.assertEqual(build_version.describe(root), "v2.2.0-rc.1-0-gabcdef012345")
 
     def test_rejects_invalid_manifest_version(self):
         with tempfile.TemporaryDirectory() as temp:
