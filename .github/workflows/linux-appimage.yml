@@ -140,8 +140,7 @@ jobs:
           test -f "$RUNNER_TEMP/vk-fsr/sa/build/hookshot_vk.so"
 
       # (a release's or the nightly's files, signed as built by this run: gh attestation verify <file> -R <this repository>)
-      - if: env.RELEASE_TAG != '' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
-       || (github.event_name == 'push' && github.ref == 'refs/heads/dev/self-hosted-release')
+      - if: env.RELEASE_TAG != '' || (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'push' && github.ref == 'refs/heads/dev/self-hosted-release')
         uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
         with:
           subject-path: |
@@ -176,7 +175,7 @@ jobs:
     name: Release asset
     if: >-
       inputs.tag != '' || (startsWith(github.ref, 'refs/tags/') && github.ref_name != 'builder-parts'
-      && github.ref_name != 'linux-parts' && github.ref_name != 'nightly') || (github.event_name == 'push' && github.ref == 'refs/heads/main')
+      && github.ref_name != 'linux-parts' && github.ref_name != 'nightly') || (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'push' && github.ref == 'refs/heads/dev/self-hosted-release')
     needs: appimage
     runs-on: ubuntu-24.04
     timeout-minutes: 15
