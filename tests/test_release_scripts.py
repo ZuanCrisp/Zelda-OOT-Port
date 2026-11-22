@@ -393,6 +393,12 @@ class ReleaseScripts(unittest.TestCase):
     def test_nightly_moves_forward_while_main_has_newer_commits(self):
         # (run 43112700938: 57ed3aa8 was built after main had moved on, and the nightly stayed where it was)
         self.given_nightly(self.Z, linux_at=self.Z)
+        state = self.state()
+        state["releases"][0]["assets"].append({
+            "id": 99999, "name": "SHA256SUMS-upstream.txt", "content": "legacy checksum",
+            "digest": "sha256:" + hashlib.sha256(b"legacy checksum").hexdigest(),
+        })
+        self.state_file.write_text(json.dumps(state), encoding="utf-8")
         r = self.nightly(self.A)
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
         self.assertEqual(self.state()["tags"]["nightly"], self.A)
@@ -403,12 +409,13 @@ class ReleaseScripts(unittest.TestCase):
         self.assertNotIn("Hookshot-v2.1.0-rc.3-1-g11111111-x86_64.AppImage.zsync", files)
         self.assertEqual(files["hookshot-linux.txt"], "linux v2.1.0-rc.3-2-gaaaaaaaa hookshot-linux.txt")
         self.assertIn("SHA256SUMS", files)
+        self.assertNotIn("SHA256SUMS-upstream.txt", files)
         # (no force: a fast-forward, which GitHub refuses when the tag moved past this commit)
         moves = [c for c in self.state()["calls"] if "repos/%s/git/refs/tags/nightly" % REPO in c]
         self.assertEqual(len(moves), 1)
         self.assertIn("force=false", moves[0])
         (body,) = [x["body"] for x in self.state()["releases"] if x["tag_name"] == "nightly"]
-        self.assertIn("Each file is named by the commit it was built from", body)
+        self.assertIn("Each file name includes the source version and commit hash", body)
         self.assertIn("Which file do I download?", body)
 
     def test_nightly_never_goes_back(self):

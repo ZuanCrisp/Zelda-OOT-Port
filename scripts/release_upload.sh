@@ -129,6 +129,10 @@ $("$files" table nightly)"
         printf '%s\n' "${new[@]}" | grep -qx "$want" || continue
         gh release delete-asset nightly "$old" --yes
     done
+    # (the old mirror's extra checksum file is not part of this repository's self-hosted release)
+    if gh release view nightly --json assets --jq '.assets[].name' | grep -qxF SHA256SUMS-upstream.txt; then
+        gh release delete-asset nightly SHA256SUMS-upstream.txt --yes
+    fi
     "$files" finish nightly "${RELEASE_SUMS_OUT:-}"
     exit 0
 fi
