@@ -735,7 +735,7 @@ class ReleaseScripts(unittest.TestCase):
     # the workflow
 
     def test_whole_promote_run_is_one_at_a_time(self):
-        flow = (ROOT / ".github/workflows/release.yml").read_text(encoding="utf-8")
+        flow = (ROOT / ".upstream-archive/workflows/release.yml").read_text(encoding="utf-8")
         top = flow[:flow.index("\njobs:")]
         self.assertIn("\nconcurrency:\n  group: ${{ github.event_name == 'workflow_dispatch' && 'release-promote'", top)
         # (a job in the same group as its own run would wait for itself)
@@ -747,7 +747,7 @@ class ReleaseScripts(unittest.TestCase):
             self.assertIn("RELEASE_FROM_WORKFLOW: ${{ inputs.tag && 'true' || 'false' }}", text, name)
 
     def test_release_candidates_update_from_rc(self):
-        flow = (ROOT / ".github/workflows/release.yml").read_text(encoding="utf-8")
+        flow = (ROOT / ".upstream-archive/workflows/release.yml").read_text(encoding="utf-8")
         job = flow[flow.index("\n  rc:\n"):flow.index("\n  record:\n")]
         self.assertIn("needs: [publish]", job)
         self.assertIn("group: release-rc\n", job)
