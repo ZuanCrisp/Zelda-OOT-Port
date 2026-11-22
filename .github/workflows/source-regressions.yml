@@ -11,7 +11,7 @@ name: Game-free source regressions
 
 on:
   push:
-    branches: [main, zuan/self-hosted-release]
+    branches: [main, dev/self-hosted-release]
   pull_request:
     branches: [main]
   workflow_dispatch:

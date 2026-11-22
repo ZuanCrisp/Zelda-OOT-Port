@@ -8,12 +8,12 @@
 name: Linux AppImage
 on:
   push:
-    branches: [main, zuan/self-hosted-release]
+    branches: [main, dev/self-hosted-release]
     tags: ['*']
   # (not for a pull request that changes only documentation or the release manifest: nothing of them is compiled or
   # packaged but readme.md, which is only copied in. A push to main builds every time)
   pull_request:
-    branches: [main, zuan/self-hosted-release]
+    branches: [main, dev/self-hosted-release]
     paths-ignore:
       - 'docs/**'
       - '*.md'
