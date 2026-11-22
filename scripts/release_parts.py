@@ -2,7 +2,7 @@
 (.github/workflows/windows-builder.yml, linux-appimage.yml). No game data is involved: the parts hold the builder, its tools
 and the play profile (addresses and counts made on the development PC).
 
-    python -I scripts/release_parts.py previous <out list> --repo <owner/name> [--repo ...] [--skip-tag <tag>]
+    python -I scripts/release_parts.py previous <out list> --repo <owner/name> [--repo ...] [--skip-tag <tag>] [--mirror-repo <owner/name>]
         the newest stable release's hookshot-setup.txt (of the first repository that has one; not --skip-tag's, the release
         being made); prints that release's tag. Exits 1 when no repository has one.
     python -I scripts/release_parts.py profile <setup list> <work folder>
@@ -71,6 +71,15 @@ def get(url, api=False, tries=5):
         time.sleep(10)
 
 
+def mirror_release_urls(data, repo):
+    """Point legacy upstream release-part URLs at this fork's copied release assets."""
+    if not repo:
+        return data
+    old = b"https://github.com/NotRexed/Hookshot/releases/download/"
+    new = ("https://github.com/%s/releases/download/" % repo).encode("ascii")
+    return data.replace(old, new)
+
+
 def previous(a):
     for repo in a.repo:
         try:
@@ -83,8 +92,10 @@ def previous(a):
                 continue
             url = next((x["browser_download_url"] for x in r["assets"] if x["name"] == "hookshot-setup.txt"), None)
             if url:
+                data = get(url)
+                data = mirror_release_urls(data, a.mirror_repo)
                 with open(a.out, "wb") as f:
-                    f.write(get(url))
+                    f.write(data)
                 print(r["tag_name"])
                 return 0
     print("no release with a hookshot-setup.txt in %s" % ", ".join(a.repo), file=sys.stderr)
@@ -300,6 +311,7 @@ def main():
     s.add_argument("out")
     s.add_argument("--repo", action="append", required=True)
     s.add_argument("--skip-tag", default="")
+    s.add_argument("--mirror-repo", default="")
     s = sub.add_parser("profile")
     s.add_argument("list")
     s.add_argument("work")
