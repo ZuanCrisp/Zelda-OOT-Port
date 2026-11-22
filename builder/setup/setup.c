@@ -513,8 +513,8 @@ static const char *manifest_url(void) {
     char tag[128];
     wanted_tag(tag, sizeof tag);
     if (e && *e) snprintf(u, sizeof u, "%s", e);
-    else if (tag[0]) snprintf(u, sizeof u, "https://github.com/NotRexed/Hookshot/releases/download/%s/hookshot-setup.txt", tag);
-    else snprintf(u, sizeof u, "%s", "https://github.com/NotRexed/Hookshot/releases/latest/download/hookshot-setup.txt");
+    else if (tag[0]) snprintf(u, sizeof u, "https://github.com/ZuanCrisp/Zelda-OOT-Port/releases/download/%s/hookshot-setup.txt", tag);
+    else snprintf(u, sizeof u, "%s", "https://github.com/ZuanCrisp/Zelda-OOT-Port/releases/latest/download/hookshot-setup.txt");
     return u;
 }
 
@@ -571,7 +571,7 @@ static DWORD WINAPI work(LPVOID unused) {
     if (!ok)
         fail(g_http_status == 404
                  ? L"The latest Hookshot release has no setup files yet. Download HookshotBuilder.zip from the releases page for now: "
-                   L"https://github.com/NotRexed/Hookshot/releases/latest"
+                   L"https://github.com/ZuanCrisp/Zelda-OOT-Port/releases/latest"
              : g_http_status ? L"GitHub's download servers are failing right now (an error 500 or above, tried 8 times over 3 minutes). "
                                L"This is on GitHub's side: try again in a few minutes, or later today."
                              : L"Could not reach GitHub to get the Hookshot Builder. Check your internet connection and try again.");
