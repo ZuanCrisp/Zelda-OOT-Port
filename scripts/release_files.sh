@@ -182,7 +182,7 @@ $body"
     dir=$(mktemp -d)
     trap 'rm -rf "$dir"' RETURN
     # (the links are made again each time: the nightly's AppImage is named after its build)
-    body=$(awk -v m="$LINKS" '$0 == m { skip = 1; next } skip && $0 == "---" { skip = 0; drop = 1; next }
+    body=$(awk -v m="$LINKS" '{ sub(/\r$/, "") } $0 == m { skip = 1; next } skip && $0 == "---" { skip = 0; drop = 1; next }
         drop && $0 == "" { drop = 0; next } { drop = 0 } !skip' <<<"$body")
     {
         links "$tag" "$id"; echo
