@@ -157,7 +157,7 @@ When a new release is out, the launcher says "Update available". Press **Update*
 `hookshot` (or the AppImage) on Linux. It downloads only the parts that changed and builds the game again in the same
 folder. The build files of the last build are gone by then (see [Where the files go](#where-the-files-go)), so an
 update takes about as long as the first build. Your saves and settings are kept. What changed is on the
-[Releases page](https://github.com/NotRexed/Hookshot/releases).
+[Releases page](https://github.com/ZuanCrisp/Zelda-OOT-Port/releases).
 
 <details>
 <summary>What an update keeps and replaces, and updating from the command line</summary>
@@ -230,7 +230,7 @@ the network or with other programs:
 - On Linux the game starts through a small script (`play-diagnostics.sh`). It keeps the game's first error messages in
   `hookshot_startup.log` in the game folder, using a private temporary folder there that it removes when the game exits.
 
-Only download Hookshot from this repository's [Releases](https://github.com/NotRexed/Hookshot/releases). Each release
+Only download Hookshot from this repository's [Releases](https://github.com/ZuanCrisp/Zelda-OOT-Port/releases). Each release
 lists its files' checksums in `SHA256SUMS`. A copy from anywhere else may not be ours.
 
 ### If something goes wrong
