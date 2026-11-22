@@ -14,7 +14,7 @@ namespace HookshotBuilder;
 /// folder keeps).
 static class Updater
 {
-    const string Latest = "https://api.github.com/repos/NotRexed/Hookshot/releases/latest";
+    const string Latest = "https://api.github.com/repos/ZuanCrisp/Zelda-OOT-Port/releases/latest";
     const string Asset = "HookshotBuilder.zip";
     const string SetupAsset = "HookshotBuilder.exe";            // (the setup, builder/setup/setup.c: a release holds it and its list)
     const string SetupList = "hookshot-setup.txt";              // (scripts/make_setup_parts.py)
@@ -63,7 +63,7 @@ static class Updater
         {
             try
             {
-                var list = await http.GetStringAsync("https://github.com/NotRexed/Hookshot/releases/latest/download/" + SetupList);
+                var list = await http.GetStringAsync("https://github.com/ZuanCrisp/Zelda-OOT-Port/releases/latest/download/" + SetupList);
                 foreach (var line in list.Split('\n'))
                     if (line.StartsWith("tag ")) return line[4..].Trim();
             }

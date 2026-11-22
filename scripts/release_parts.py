@@ -69,6 +69,15 @@ def get(url, api=False, tries=5):
         time.sleep(10)
 
 
+def mirror_release_urls(data, repo):
+    """Point previous release-part URLs at this repository's copied release assets."""
+    if not repo:
+        return data
+    old = b"https://github.com/NotRexed/Hookshot/releases/download/"
+    new = ("https://github.com/%s/releases/download/" % repo).encode("ascii")
+    return data.replace(old, new)
+
+
 def previous(a):
     for repo in a.repo:
         try:
@@ -81,13 +90,13 @@ def previous(a):
                 continue
             url = next((x["browser_download_url"] for x in r["assets"] if x["name"] == "hookshot-setup.txt"), None)
             if url:
+                data = mirror_release_urls(get(url), a.mirror_repo)
                 with open(a.out, "wb") as f:
-                    f.write(get(url))
+                    f.write(data)
                 print(r["tag_name"])
                 return 0
     print("no release with a hookshot-setup.txt in %s" % ", ".join(a.repo), file=sys.stderr)
     return 1
-
 
 def part_lines(path):
     with open(path, encoding="utf-8") as f:
@@ -272,6 +281,7 @@ def main():
     s.add_argument("out")
     s.add_argument("--repo", action="append", required=True)
     s.add_argument("--skip-tag", default="")
+    s.add_argument("--mirror-repo", default="")
     s = sub.add_parser("profile")
     s.add_argument("list")
     s.add_argument("work")
