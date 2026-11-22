@@ -91,7 +91,7 @@ you start the game from its launcher, which also updates it.
 For a portable install on an external SSD, run the downloaded setup with `--portable`; see
 [Portable Hookshot Builder](docs/windows-portable-builder.md) for folder, move and repair behavior.
 
-1. Open the [latest release](https://github.com/NotRexed/Hookshot/releases/latest) and download `HookshotBuilder.exe`.
+1. Open the [latest release](https://github.com/ZuanCrisp/Zelda-OOT-Port/releases/latest) and download `HookshotBuilder.exe`.
 2. Run it. It downloads the rest of Hookshot Builder (about 500 MB), checks it, and opens it.
 3. Pick your game. The builder looks for `.nup` files in your Downloads, Desktop and Documents folders and lists them
    under **Found on this PC**. Not listed? Press **Browse…**, drop the file on the window, or choose
@@ -110,7 +110,7 @@ The first start prepares the game's shaders, which takes a while. Later starts a
 
 ### On Linux
 
-1. Open the [latest release](https://github.com/NotRexed/Hookshot/releases/latest) and download
+1. Open the [latest release](https://github.com/ZuanCrisp/Zelda-OOT-Port/releases/latest) and download
    `Hookshot-<version>-x86_64.AppImage`. It is Hookshot Builder with everything it needs inside.
 2. Allow it to run as a program. In most file managers: right-click it, open **Properties**, and turn on
    "Allow executing file as program" (the words differ between desktops). Or in a terminal:
@@ -179,10 +179,10 @@ with `--update <game folder>`.
 
 </details>
 
-### Latest development build
+### Latest development build (Re-Create by ZuanCrisp)
 
 Want a fix before it is in a release? The
-[latest development build](https://github.com/NotRexed/Hookshot/releases/tag/nightly) is made from `main` after every
+[latest development build](https://github.com/ZuanCrisp/Zelda-OOT-Port/releases/tag/nightly) is made from `main` after every
 change, with the same files as a release. It is untested and may break your saves or settings: copy them first (see
 above).
 
@@ -190,7 +190,7 @@ above).
   (without `--tag nightly` it installs the latest release instead).
 - **Linux:** download `Hookshot-<version>-x86_64.AppImage` from it and use it as above.
 
-To go back, install the [latest release](https://github.com/NotRexed/Hookshot/releases/latest) the usual way.
+To go back, install the [latest release](https://github.com/ZuanCrisp/Zelda-OOT-Port/releases/latest) the usual way.
 
 ### Where the files go
 

@@ -1389,7 +1389,7 @@ public partial class MainWindow : Window
             Application.Current.Shutdown();
             return;
         }
-        Process.Start(new ProcessStartInfo("https://github.com/NotRexed/Hookshot/releases/latest") { UseShellExecute = true });
+        Process.Start(new ProcessStartInfo("https://github.com/ZuanCrisp/Zelda-OOT-Port/releases/latest") { UseShellExecute = true });
     }
 
     // ================= the update (Updater.cs): the game started this app with --update <folder> =================
