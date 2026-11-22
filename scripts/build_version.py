@@ -10,7 +10,7 @@ import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION_RE = re.compile(r"\\d+\\.\\d+\\.\\d+(?:-rc\\.\\d+)?\\Z")
+VERSION_RE = re.compile(r"\d+\.\d+\.\d+(?:-rc\.\d+)?\Z")
 
 
 def describe(root=ROOT):

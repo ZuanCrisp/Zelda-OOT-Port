@@ -16,7 +16,7 @@ class BuildVersion(unittest.TestCase):
     def test_uses_git_describe_when_a_version_tag_is_reachable(self):
         class Result:
             returncode = 0
-            stdout = "v2.2.0-rc.1-57-g82885814\\n"
+            stdout = "v2.2.0-rc.1-57-g82885814\n"
         with patch.object(build_version.subprocess, "run", return_value=Result()):
             self.assertEqual(build_version.describe(ROOT), "v2.2.0-rc.1-57-g82885814")
 
@@ -30,7 +30,7 @@ class BuildVersion(unittest.TestCase):
                 returncode = 128
                 stdout = ""
             class Sha:
-                stdout = "abcdef012345\\n"
+                stdout = "abcdef012345\n"
             with patch.object(build_version.subprocess, "run", side_effect=[NoTag(), Sha()]):
                 self.assertEqual(build_version.describe(root), "v2.2.0-rc.1-0-gabcdef01")
 
