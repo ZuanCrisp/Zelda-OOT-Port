@@ -82,7 +82,7 @@ THUMB = ("{ extern volatile float hos_wide_ratio; const float _r = hos_wide_rati
          "c->x[2] = (uint32_t)((306 - _h) / 2); c->x[4] = (uint32_t)_h; } } }"
          "   /* (nx2/oot_wide.py: the save's picture, the middle 16:9) */")
 
-# The HUD's layout for the screen's shape (host/hos_wide_ui.c; the sites are from https://github.com/NotRexed/Hookshot/pull/2843). A 2D layout pane's final transform is made by f_8154cab0 (main+0x152cab0) when
+# The HUD's layout for the screen's shape (host/hos_wide_ui.c; the sites are from https://github.com/ZuanCrisp/Zelda-OOT-Port/pull/2843). A 2D layout pane's final transform is made by f_8154cab0 (main+0x152cab0) when
 # its dirty bit 6 is set (f_8154caa0 checks it and falls into it); the pane is x0 there and x19 in it. The parent it multiplies
 # by is x0 after main+0x152cdd4; main+0x152cd98 is where every path without one joins. The translation is stored at
 # main+0x152ce64, before the stored transform is read back to tell whether the children need theirs remade. f_8154ac30 reads a

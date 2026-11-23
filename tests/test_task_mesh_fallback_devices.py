@@ -1,8 +1,8 @@
 """The GPUs whose task + mesh draws take the compute fallback by default (gpu/vk/mesh_mode.h, gpu/vk/vk_main.cpp,
-https://github.com/NotRexed/Hookshot/issues/996).
+https://github.com/ZuanCrisp/Zelda-OOT-Port/issues/996).
 
 On AMD's Windows driver the native task + mesh path timed out the driver on Navi 22
-(https://github.com/NotRexed/Hookshot/pull/1747) and on Navi 21: an RX 6800 XT lost the device within minutes at Hyrule
+(https://github.com/ZuanCrisp/Zelda-OOT-Port/pull/1747) and on Navi 21: an RX 6800 XT lost the device within minutes at Hyrule
 Castle's entrance, and played 25 minutes there with none through the fallback. An RX 6600 (Navi 23) lost the device on the
 session's first task + mesh draws (reported in Mako by sharkiix). Navi 24 is held out: no report, and 4 GB cards where the
 fallback's buffers cost the most. This compiles mesh_rule::task_mesh_fallback_default and checks that it names those chips'

@@ -58,11 +58,11 @@ what does not yet. Open problems are collected in tracking issues, linked below.
 | Stutter when entering new areas | ⚠️ Still happens the first time you visit a place. The next visits are smooth |
 | Performance | ⚠️ Depends on the PC: some reach a steady 60 fps, others stay below it, more so in Hyrule Field |
 | Hyrule Field, Castle Town, Kakariko and the dungeons | ⚠️ Players got there, with open bugs: lighting and shadows (#1004), crashes and freezes (#2507) |
-| Ultrawide and 4:3 | ✅ Works. The Aspect ratio row's default, Monitor's shape, widens the 3D to the screen and keeps the HUD and movies in the middle 16:9 ([#2119](https://git.notrexed.dev/Hookshot/Hookshot/commit/145eed2650d9d2cebad85a8a0052d302086015c7)) |
+| Ultrawide and 4:3 | ✅ Works. The Aspect ratio row's default, Monitor's shape, widens the 3D to the screen and keeps the HUD and movies in the middle 16:9 ([#2119](https://github.com/ZuanCrisp/Zelda-OOT-Port/commit/145eed2650d9d2cebad85a8a0052d302086015c7)) |
 | NVIDIA cards | ✅ Works. The most tested |
-| AMD cards | ⚠️ Many tested: reports from the RX 6600, RX 6800 XT, RX 7800 XT, RX 7900 XTX and RX 9070 XT. On Windows, the RX 6000 cards (Navi 21 and 22) draw task and mesh shaders through the compute fallback by default, as the driver lost the GPU with them (#1747, [#1992](https://git.notrexed.dev/Hookshot/Hookshot/commit/1396428d0bfcde68b5c7bd63f9837564d9af1a05), [#2215](https://git.notrexed.dev/Hookshot/Hookshot/commit/f95d80f5371821420c5a47a0c7e9f73e7f484abc)). Driver crashes and device lost are still reported ([#996](https://git.notrexed.dev/Hookshot/Hookshot/commit/f95d80f5371821420c5a47a0c7e9f73e7f484abc)) |
+| AMD cards | ⚠️ Many tested: reports from the RX 6600, RX 6800 XT, RX 7800 XT, RX 7900 XTX and RX 9070 XT. On Windows, the RX 6000 cards (Navi 21 and 22) draw task and mesh shaders through the compute fallback by default, as the driver lost the GPU with them (#1747, [#1992](https://github.com/ZuanCrisp/Zelda-OOT-Port/commit/1396428d0bfcde68b5c7bd63f9837564d9af1a05), [#2215](https://github.com/ZuanCrisp/Zelda-OOT-Port/commit/f95d80f5371821420c5a47a0c7e9f73e7f484abc)). Driver crashes and device lost are still reported ([#996](https://github.com/ZuanCrisp/Zelda-OOT-Port/commit/f95d80f5371821420c5a47a0c7e9f73e7f484abc)) |
 | Intel cards | ❓ Few reports, many of them black screens or crashes (#999) |
-| Cards without mesh shaders (such as AMD RX 5000 and older) | ❌ Not supported: parts of the picture are missing. Since v2.0.6 a fallback runs the mesh programs as compute shaders on cards with buffer device addresses ([#640](https://git.notrexed.dev/Hookshot/Hookshot/commit/07773abd1dc7d79d56a690207e9bc7db7272076d)); it leaves out the mesh draws that take their count from a buffer |
+| Cards without mesh shaders (such as AMD RX 5000 and older) | ❌ Not supported: parts of the picture are missing. Since v2.0.6 a fallback runs the mesh programs as compute shaders on cards with buffer device addresses ([#640](https://github.com/ZuanCrisp/Zelda-OOT-Port/commit/07773abd1dc7d79d56a690207e9bc7db7272076d)); it leaves out the mesh draws that take their count from a buffer |
 | Linux | ✅ Works with the AppImage. Tested on several distributions (CachyOS, Fedora, Bazzite, SteamOS) and cards, with open problems on some AMD cards (#1000) |
 
 ## Install and play
@@ -91,7 +91,7 @@ you start the game from its launcher, which also updates it.
 For a portable install on an external SSD, run the downloaded setup with `--portable`; see
 [Portable Hookshot Builder](docs/windows-portable-builder.md) for folder, move and repair behavior.
 
-1. Open the [latest release](https://git.notrexed.dev/Hookshot/Hookshot/releases/latest) and download `HookshotBuilder.exe`.
+1. Open the [latest release](https://github.com/ZuanCrisp/Zelda-OOT-Port/releases/latest) and download `HookshotBuilder.exe`.
 2. Run it. It downloads the rest of Hookshot Builder (about 500 MB), checks it, and opens it.
 3. Pick your game. The builder looks for `.nup` files in your Downloads, Desktop and Documents folders and lists them
    under **Found on this PC**. Not listed? Press **Browse…**, drop the file on the window, or choose
@@ -110,7 +110,7 @@ The first start prepares the game's shaders, which takes a while. Later starts a
 
 ### On Linux
 
-1. Open the [latest release](https://git.notrexed.dev/Hookshot/Hookshot/releases/latest) and download
+1. Open the [latest release](https://github.com/ZuanCrisp/Zelda-OOT-Port/releases/latest) and download
    `Hookshot-<version>-x86_64.AppImage`. It is Hookshot Builder with everything it needs inside.
 2. Allow it to run as a program. In most file managers: right-click it, open **Properties**, and turn on
    "Allow executing file as program" (the words differ between desktops). Or in a terminal:
@@ -157,7 +157,7 @@ When a new release is out, the launcher says "Update available". Press **Update*
 `hookshot` (or the AppImage) on Linux. It downloads only the parts that changed and builds the game again in the same
 folder. The build files of the last build are gone by then (see [Where the files go](#where-the-files-go)), so an
 update takes about as long as the first build. Your saves and settings are kept. What changed is on the
-[Releases page](https://git.notrexed.dev/Hookshot/Hookshot/releases).
+[Releases page](https://github.com/ZuanCrisp/Zelda-OOT-Port/releases).
 
 <details>
 <summary>What an update keeps and replaces, and updating from the command line</summary>
@@ -182,7 +182,7 @@ with `--update <game folder>`.
 ### Latest development build
 
 Want a fix before it is in a release? The
-[latest development build](https://git.notrexed.dev/Hookshot/Hookshot/releases/tag/nightly) is made from `main` after every
+[latest development build](https://github.com/ZuanCrisp/Zelda-OOT-Port/releases/tag/nightly) is made from `main` after every
 change, with the same files as a release. It is untested and may break your saves or settings: copy them first (see
 above).
 
@@ -190,7 +190,7 @@ above).
   (without `--tag nightly` it installs the latest release instead).
 - **Linux:** download `Hookshot-<version>-x86_64.AppImage` from it and use it as above.
 
-To go back, install the [latest release](https://git.notrexed.dev/Hookshot/Hookshot/releases/latest) the usual way.
+To go back, install the [latest release](https://github.com/ZuanCrisp/Zelda-OOT-Port/releases/latest) the usual way.
 
 ### Where the files go
 
@@ -230,7 +230,7 @@ the network or with other programs:
 - On Linux the game starts through a small script (`play-diagnostics.sh`). It keeps the game's first error messages in
   `hookshot_startup.log` in the game folder, using a private temporary folder there that it removes when the game exits.
 
-Only download Hookshot from this repository's [Releases](https://git.notrexed.dev/Hookshot/Hookshot/releases). Each release
+Only download Hookshot from this repository's [Releases](https://github.com/ZuanCrisp/Zelda-OOT-Port/releases). Each release
 lists its files' checksums in `SHA256SUMS`. A copy from anywhere else may not be ours.
 
 ### If something goes wrong
@@ -242,7 +242,7 @@ lists its files' checksums in `SHA256SUMS`. A copy from anywhere else may not be
 | Linux Builder Play closed before the game log appeared | After the game exits, check `hookshot_startup.log` in the game folder for up to 64 KiB of startup stderr and its exit status. |
 | "Hookshot supports build e0f3ccfa" or "This version isn't supported" | Check that you chose the right game with its update installed |
 | The game opens and closes, or the log says "device lost" | Update your graphics driver. On AMD cards there are known crashes (#708, #614) |
-| Parts of the picture are missing, or a message says your card has no mesh shader support | The card or its driver has no mesh shaders. Update the driver; older cards are not supported ([#640](https://git.notrexed.dev/Hookshot/Hookshot/commit/07773abd1dc7d79d56a690207e9bc7db7272076d)) |
+| Parts of the picture are missing, or a message says your card has no mesh shader support | The card or its driver has no mesh shaders. Update the driver; older cards are not supported ([#640](https://github.com/ZuanCrisp/Zelda-OOT-Port/commit/07773abd1dc7d79d56a690207e9bc7db7272076d)) |
 | AMD: blocky textures, solid rectangles in the sky or unusually dark courtyard surfaces | Try the [RGBA8 texture workaround](#amd-texture-workaround). It uses more graphics memory |
 | Linux: the game does not start or the picture is broken | The game needs a Vulkan 1.3 driver with mesh shaders. Check with `vulkaninfo \| grep mesh`: it should list `VK_EXT_mesh_shader`. Update Mesa or the NVIDIA driver |
 | Steam Deck: the game freezes and closes in Kokiri Forest or the Great Deku Tree (`gfx_0.0.0 timeout` in `journalctl -k`) | `RX_VK_MESH_NOCULL=2c56dc1006942f74` in `hookshot_env.txt` gets past it with every model drawn (the culling pass that runs for seconds is turned off). `RX_VK_SKIP_CODE=2c56dc1006942f74` also gets past it, but the models those draws make go missing (see the [development guide](docs/development.md#switches-for-testing-and-debugging), #817) |
@@ -251,7 +251,7 @@ lists its files' checksums in `SHA256SUMS`. A copy from anywhere else may not be
 | Windows, NVIDIA: stutter every start in places you have seen, after the shaders were prepared | The driver's shader cache is too small to keep them all (the first start builds about 2 GB of pipelines into it). In the NVIDIA Control Panel, Manage 3D settings, set **Shader Cache Size** to **Unlimited** (or 10 GB). On Linux the game raises the driver's limit itself |
 | The game is in the wrong language | Change the code in `language.txt` in the game folder. The file lists them all, and an update keeps the one you set there |
 
-If the problem continues, [report it](https://git.notrexed.dev/Hookshot/Hookshot/issues/new/choose) with the version, where
+If the problem continues, [report it](https://github.com/ZuanCrisp/Zelda-OOT-Port/issues/new/choose) with the version, where
 you were in the game, your graphics card, `hookshot_log.txt` and a screenshot or video. Never send game files. The
 in-game menu's **Gameplay → Bug report** gathers all of it in one press ([In-game menu](#in-game-menu)).
 
@@ -441,7 +441,7 @@ HDR, Detail, and GPU and memory (last: the rows to change when something is wron
   holds the frames to its refresh rate: V-Sync on, or the driver's FIFO mode. `HOS_FPS_MAX=30` or `<61-1000>` sets a cap for one
   run.
 - **Bug report** writes a folder `bug-reports/<date>_<time>` in the game folder with what an issue needs: `report.txt`,
-  which answers the [game problem form](https://git.notrexed.dev/Hookshot/Hookshot/issues/new?template=1-game-problem.yml)'s
+  which answers the [game problem form](https://github.com/ZuanCrisp/Zelda-OOT-Port/issues/new?template=1-game-problem.yml)'s
   questions under its own headings (the version, the map you are in, your graphics card and driver, CPU, RAM and
   system, the menu options and the `RX_`/`HOS_` switches you changed) and ends with a link that opens the form with them
   filled in (the switches by name only); `hookshot_log.txt` (this run's log so far) and `hookshot_log.1.txt` (the run

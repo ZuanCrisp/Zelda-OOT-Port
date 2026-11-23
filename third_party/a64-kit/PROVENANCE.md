@@ -12,7 +12,7 @@ Most of the project's changes live outside this folder (`nx2/`): they wrap these
 
 Changes made here after the copy (against Hookshot's first import of it, commit `04407384`):
 
-- Hookshot (NotRexed/Hookshot, before the fork): `lift/a64_lift.py` (game patches after an instruction, setjmp owners,
+- Hookshot (ZuanCrisp/Zelda-OOT-Port, before the fork): `lift/a64_lift.py` (game patches after an instruction, setjmp owners,
   page marks grouped per straight-line run of stores), `lift/build_emit.py`, `lift/suyu/arm64_to_c.h` (the FMUL/FMLA-family
   sticky-flag fast path, a64_fpx), `rt/a64.h` and `rt/a64_rt.c` (setjmp in lifted code, the BR hook, an exclusive store's
   page marked after the store), `tools/toolchain.py` (Windows builds with llvm-mingw, cross builds with

@@ -4,7 +4,7 @@ adult, with the items, their effects and the menus, so that its graphics pipelin
 assets/pipeline_states/tour.bin.xz and tour.md (nx2/pipeline_states.py tour): the first start prepares those pipelines before the
 title.
 
-Ported from Hookshot's draft pull request https://github.com/NotRexed/Hookshot/pull/2048 by HumanBean (hckrman101 on GitHub), and
+Ported from Hookshot's draft pull request https://github.com/ZuanCrisp/Zelda-OOT-Port/pull/2048 by HumanBean (hckrman101 on GitHub), and
 changed to drive the game through the control bridge (host/control.c, docs/control.md) instead of a live input file and the log.
 
     python -I scripts/pipeline_tour.py tour --game <game folder> --out <dir> [--name play] [--parts ...] [--publish] [--env ...] [--ini ...]

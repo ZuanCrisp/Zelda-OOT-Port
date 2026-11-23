@@ -73,7 +73,7 @@ class Http:
                 return None if sink else b"".join(out)
         except urllib.error.HTTPError as e:
             self.status = e.code
-            raise SetupError("git.notrexed.dev returned HTTP %d" % e.code) from None
+            raise SetupError("github.com returned HTTP %d" % e.code) from None
         except (urllib.error.URLError, OSError, TimeoutError) as e:
             if not isinstance(e, SetupError):
                 self.status = self.status if self.status and self.status != 200 else 0
@@ -88,11 +88,11 @@ def api_link_for(http, url):
     if not m:
         return None
     repo, tag, name = m.groups()
-    api = "https://git.notrexed.dev/api/v1/repos/%s/releases/%s" % (repo, ("tags/" + tag) if tag else "latest")
+    api = "https://api.github.com/repos/%s/releases/%s" % (repo, ("tags/" + tag) if tag else "latest")
     try:
         doc = json.loads(http.get(api, accept="application/vnd.github+json"))
         for a in doc.get("assets", []):
-            if a.get("name") == name and str(a.get("browser_download_url", "")).startswith("https://git.notrexed.dev/"):
+            if a.get("name") == name and str(a.get("browser_download_url", "")).startswith("https://github.com/"):
                 return a["browser_download_url"]
     except (SetupError, ValueError):
         pass
