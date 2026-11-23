@@ -11,7 +11,7 @@ permissions:
   attestations: write
 
 concurrency:
-  group: rebuild-mirrored-linux-releases-dev
+  group: rebuild-mirrored-linux-releases-dev-retry1
   cancel-in-progress: true
 
 jobs:
