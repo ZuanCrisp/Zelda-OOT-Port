@@ -1,0 +1,122 @@
+name: Rebuild mirrored Linux releases
+
+on:
+  push:
+    branches:
+      - dev/self-hosted-release
+
+permissions:
+  contents: write
+  id-token: write
+  attestations: write
+
+concurrency:
+  group: rebuild-mirrored-linux-releases-dev
+  cancel-in-progress: true
+
+jobs:
+  v230-linux:
+    name: v2.3.0 - Linux AppImage
+    uses: ./.github/workflows/linux-appimage-rebuild.yml
+    with:
+      tag: v2.3.0
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+
+  v231-linux:
+    name: v2.3.1 - Linux AppImage
+    needs: [v230-linux]
+    uses: ./.github/workflows/linux-appimage-rebuild.yml
+    with:
+      tag: v2.3.1
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+
+  v232-linux:
+    name: v2.3.2 - Linux AppImage
+    needs: [v231-linux]
+    uses: ./.github/workflows/linux-appimage-rebuild.yml
+    with:
+      tag: v2.3.2
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+
+  v300-linux:
+    name: v3.0.0 - Linux AppImage
+    needs: [v232-linux]
+    uses: ./.github/workflows/linux-appimage-rebuild.yml
+    with:
+      tag: v3.0.0
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+
+  v301-linux:
+    name: v3.0.1 - Linux AppImage
+    needs: [v300-linux]
+    uses: ./.github/workflows/linux-appimage-rebuild.yml
+    with:
+      tag: v3.0.1
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+
+  v302-linux:
+    name: v3.0.2 - Linux AppImage
+    needs: [v301-linux]
+    uses: ./.github/workflows/linux-appimage-rebuild.yml
+    with:
+      tag: v3.0.2
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+
+  finalize-linux-releases:
+    name: Refresh checksums and verify Linux assets
+    needs:
+      - v230-linux
+      - v231-linux
+      - v232-linux
+      - v300-linux
+      - v301-linux
+      - v302-linux
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        tag: [v2.3.0, v2.3.1, v2.3.2, v3.0.0, v3.0.1, v3.0.2]
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      TAG: ${{ matrix.tag }}
+    steps:
+      - name: Check out the exact source tag
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ matrix.tag }}
+          persist-credentials: false
+      - name: Refresh combined SHA256SUMS
+        run: bash scripts/release_files.sh finish "$TAG"
+      - name: Verify Windows and Linux release assets and checksums
+        run: |
+          bash scripts/release_files.sh check "$TAG" \
+            HookshotBuilder.exe \
+            HookshotBuilder.exe.sha256 \
+            hookshot-setup.txt \
+            hookshot-linux.txt \
+            "Hookshot-$TAG-Windows-x64.zip" \
+            "Hookshot-$TAG-x86_64.AppImage" \
+            "Hookshot-$TAG-x86_64.AppImage.zsync" \
+            Hookshot-x86_64.AppImage.zsync

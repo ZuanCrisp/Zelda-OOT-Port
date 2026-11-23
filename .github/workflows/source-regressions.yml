@@ -8,7 +8,7 @@ name: Game-free source regressions
 
 on:
   push:
-    branches: [main, dev/self-hosted-release]
+    branches: [main]
   pull_request:
     branches: [main, dev/self-hosted-release]
   workflow_dispatch:

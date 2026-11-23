@@ -11,8 +11,7 @@ name: Windows builder
 
 on:
   push:
-    branches: [main, dev/self-hosted-release]
-    tags: ['*']
+    branches: [main]
   pull_request:
   workflow_dispatch:
   workflow_call:
