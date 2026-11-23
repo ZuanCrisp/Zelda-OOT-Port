@@ -58,7 +58,7 @@ saved snapshot until GitHub is reachable. Pagination limits fail the entire upda
 
 Keys in `progress-curation.json` use `issue:123`, `pull:456` or `release:789` (the release ID, not tag).
 Each entry needs `title`, `summary`, `reviewedAt` (ISO date), `sourceUpdatedAt` (exact API timestamp), and `sources`
-(public URLs under `https://github.com/NotRexed/Hookshot/`). Optional `platforms` contains `Windows`, `Linux`,
+(public URLs under `https://github.com/ZuanCrisp/Zelda-OOT-Port/`). Optional `platforms` contains `Windows`, `Linux`,
 `Steam Deck`, or `Other`; optional `area` is `Graphics`, `Performance`, `Controls`, `Audio`, `Setup`, or
 `Documentation`, `Crashes or startup`, or `Sound, controls or saves`; optional `workaround` is plain text.
 Optional `impact` is `Crashes`, `Save integrity`, `Cannot start`, or `Blocked progression`; it enables the reviewed

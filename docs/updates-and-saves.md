@@ -8,7 +8,7 @@ the README explains [where other files go](../readme.md#where-the-files-go).
 
 ## Stable and development builds
 
-The [release page](https://github.com/NotRexed/Hookshot/releases) identifies stable and prerelease builds.
+The [release page](https://github.com/ZuanCrisp/Zelda-OOT-Port/releases) identifies stable and prerelease builds.
 Read [the versioning guide](versioning.md) and [development-build instructions](../readme.md#latest-development-build)
 before switching tracks. Record the exact version when reporting a problem.
 

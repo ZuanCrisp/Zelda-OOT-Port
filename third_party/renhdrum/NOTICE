@@ -94,7 +94,7 @@ Attributions & Third-Party Credits
     providing the reference static recompilation testbed for integrations/recomp-c/
     (see integrations/recomp-c/reference/).
     Licensed under the GNU General Public License, version 3 (GPL-3.0).
-    https://github.com/NotRexed/Hookshot
+    https://github.com/ZuanCrisp/Zelda-OOT-Port
 
 15. iafx, LiveHaptics, and hckrman101 (Hookshot PR #1213)
     Steam Controller (2026) grip HID report 0x86 / 0x88 protocol and hardware

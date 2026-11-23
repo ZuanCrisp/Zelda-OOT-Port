@@ -26,15 +26,15 @@ and the release notes. Issue examples identify the original reports; follow thei
 A report closed as a duplicate does not mean the bug is fixed.
 
 The site builds from the Markdown files in the repository. See the
-[website instructions](https://github.com/NotRexed/Hookshot/blob/main/website/README.md)
+[website instructions](https://github.com/ZuanCrisp/Zelda-OOT-Port/blob/main/website/README.md)
 for editing and publishing.
 
 ## Project links
 
-- [Hookshot by NotRexed](https://github.com/NotRexed/Hookshot)
+- [Hookshot by NotRexed](https://github.com/ZuanCrisp/Zelda-OOT-Port)
 - [Preview source](https://github.com/bibigurl-yum/Hookshot/tree/docs/starlight-preview)
-- [Stable releases](https://github.com/NotRexed/Hookshot/releases/latest)
-- [Report a bug](https://github.com/NotRexed/Hookshot/issues/new/choose)
+- [Stable releases](https://github.com/ZuanCrisp/Zelda-OOT-Port/releases/latest)
+- [Report a bug](https://github.com/ZuanCrisp/Zelda-OOT-Port/issues/new/choose)
 
 Hookshot is an independent project, not affiliated with or endorsed by Nintendo. The game, characters and names
 belong to their respective owners.

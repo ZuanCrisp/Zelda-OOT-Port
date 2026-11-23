@@ -742,7 +742,7 @@ std::string pcache_dir;
 
 // (hookshot) Intel's Windows driver faults in vkGetPipelineCacheData (igvk64.dll+0x79ddf3, an access violation) when it fetches
 // a cache's data while other threads build pipelines with that cache: the game closes with no message
-// (https://github.com/NotRexed/Hookshot/issues/999: the Arc 140V, and 4 runs of 6 on a Core Ultra 7 155H, driver 101.9175).
+// (https://github.com/ZuanCrisp/Zelda-OOT-Port/issues/999: the Arc 140V, and 4 runs of 6 on a Core Ultra 7 155H, driver 101.9175).
 // Vulkan allows it; on Intel the fetches and the builds take turns: a build holds this shared, a fetch alone.
 // The fetch holds it around the vkGetPipelineCacheData calls only, never across a file's write nor across a wait for the
 // builds (play_cache_save's wait for a generation's users: a builder counted in there may be between two of its builds, waiting

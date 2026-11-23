@@ -10,7 +10,7 @@ system, GPU capabilities, memory, and free space. The builder checks your game v
 
 ## Windows
 
-Get the builder from the [official releases](https://github.com/NotRexed/Hookshot/releases/latest), then follow the
+Get the builder from the [official releases](https://github.com/ZuanCrisp/Zelda-OOT-Port/releases/latest), then follow the
 [Windows installation steps](../readme.md#on-windows). That section covers choosing your game, installation folder,
 and language, building, and launching.
 

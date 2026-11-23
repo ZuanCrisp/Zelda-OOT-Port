@@ -2,14 +2,14 @@
 
 ## Report a bug
 
-Search [Common issues](common-issues.md) and the [issue tracker](https://github.com/NotRexed/Hookshot/issues), then
-use the [issue forms](https://github.com/NotRexed/Hookshot/issues/new/choose). Follow the
+Search [Common issues](common-issues.md) and the [issue tracker](https://github.com/ZuanCrisp/Zelda-OOT-Port/issues), then
+use the [issue forms](https://github.com/ZuanCrisp/Zelda-OOT-Port/issues/new/choose). Follow the
 [contribution rules](../CONTRIBUTING.md#before-you-open-an-issue-or-a-pr) for the required details and allowed files.
 If a report already covers your problem, add your details there.
 
 ## Contribute a pipeline list
 
-Read [the pipeline collection issue](https://github.com/NotRexed/Hookshot/issues/2034) for the current file, build,
+Read [the pipeline collection issue](https://github.com/ZuanCrisp/Zelda-OOT-Port/issues/2034) for the current file, build,
 and template requirements. The [pipeline-state notes](../assets/pipeline_states/README.md) explain the format
 and provenance. Include only the file explicitly requested by the maintainers; never attach the rest of your game folder.
 

@@ -1,5 +1,5 @@
 """The HUD's pane planner (ozwaldorf's Extended ultrawide menus,
-https://github.com/NotRexed/Hookshot/pull/2843) moves a HUD layout's side panes out
+https://github.com/ZuanCrisp/Zelda-OOT-Port/pull/2843) moves a HUD layout's side panes out
 to a wider screen's edges, and only while the picture is not 16:9.
 
 nx2/oot_wide.py calls host/hos_wide_ui.c from f_8154cab0, where the game makes a pane's final transform: the parent it is
