@@ -26,9 +26,6 @@ on:
         required: true
 permissions:
   contents: read
-env:
-  # (the release this run is for: the tag passed by the Release workflow, or a pushed tag; empty on other runs)
-  RELEASE_TAG: ${{ inputs.tag || (startsWith(github.ref, 'refs/tags/') && github.ref_name || '') }}
 concurrency:
   group: linux-appimage-${{ inputs.tag || github.ref }}
   # (a pull request's older run is cancelled; a push's or a tag's never is. One run of main at a time, and one waiting,
@@ -37,6 +34,9 @@ concurrency:
 
 jobs:
   appimage:
+    env:
+      # Inputs are job-scoped here so the reusable workflow can resolve its release tag.
+      RELEASE_TAG: ${{ inputs.tag || (startsWith(github.ref, 'refs/tags/') && github.ref_name || '') }}
     # (builder-parts holds the installer's parts: no AppImage there, and it must never be made "latest")
     # (nightly is moved forward by the release job of a push to main, here or in the Windows builder workflow, and rc by
     # the Release workflow: never built as a tag)
@@ -271,6 +271,7 @@ jobs:
       id-token: write
       attestations: write
     env:
+      RELEASE_TAG: ${{ inputs.tag || (startsWith(github.ref, 'refs/tags/') && github.ref_name || '') }}
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
       RELEASE_SUMS_OUT: dist/SHA256SUMS
