@@ -8,7 +8,16 @@
 name: Linux AppImage
 on:
   push:
-    branches: [dev/self-hosted-release]
+    branches: [main]
+    tags: ['*']
+  # (not for a pull request that changes only documentation or the release manifest: nothing of them is compiled or
+  # packaged but readme.md, which is only copied in. A push to main builds every time)
+  pull_request:
+    paths-ignore:
+      - 'docs/**'
+      - '*.md'
+      - '.release-please-manifest.json'
+  workflow_dispatch:
   workflow_call:
     inputs:
       tag:
@@ -32,7 +41,7 @@ jobs:
     # (nightly is moved forward by the release job of a push to main, here or in the Windows builder workflow, and rc by
     # the Release workflow: never built as a tag)
     if: >-
-      inputs.tag != '' && github.ref_name != 'builder-parts' && github.ref_name != 'linux-parts' && github.ref_name != 'nightly'
+      github.ref_name != 'builder-parts' && github.ref_name != 'linux-parts' && github.ref_name != 'nightly'
       && github.ref_name != 'rc'
     runs-on: ubuntu-latest
     container: ubuntu:22.04
