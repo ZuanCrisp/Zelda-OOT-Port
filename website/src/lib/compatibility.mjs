@@ -1,4 +1,4 @@
-// Requirements checked against NotRexed/Hookshot's README on 2026-11-10.
+// Requirements checked against ZuanCrisp/Zelda-OOT-Port's README on 2026-11-10.
 // Keep hardware requirements separate from performance and stability claims.
 export function checkCompatibility(input) {
   const rows = [];

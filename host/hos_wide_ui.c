@@ -1,7 +1,7 @@
 /* (hookshot) The HUD laid out for the picture's shape (hos_wide_ui_tick below): at its 16:9 size, what sits at a side or
    corner of its 16:9 canvas moved out (or in) to the screen's, as a layout made for that shape would place it; panes
    spanning the canvas drawn the screen's width. The pane planner is ozwaldorf's ("Extended" ultrawide menus,
-   https://github.com/NotRexed/Hookshot/pull/2843), here for the HUD's layouts on every shape, by
+   https://github.com/ZuanCrisp/Zelda-OOT-Port/pull/2843), here for the HUD's layouts on every shape, by
    default, both ways and up and down; the menus are not moved (on a narrower screen they are drawn smaller to fit).
 
    The game's 2D layouts keep their panes in an array (the layout's +0x100, 0xb0 bytes each). f_8154cab0 makes a pane's
@@ -67,7 +67,7 @@ volatile float hos_ui_qx, hos_ui_qy;
 static volatile float ui_ex, ui_ey, ui_wx = 1.0f, ui_fit = 1.0f;
 /* (the loading fade's pane that spans its canvas, drawn the whole picture: ui_fill_x wider (a wider screen, its layout in the
    middle 16:9), ui_fill_y taller (a narrower one, its layout at the HUD's size). Hookshot #82,
-   https://github.com/NotRexed/Hookshot/issues/2220: in the centred Ultrawide menus modes the fade covered the middle 16:9
+   https://github.com/ZuanCrisp/Zelda-OOT-Port/issues/2220: in the centred Ultrawide menus modes the fade covered the middle 16:9
    alone, the world still showing beside it. While its screen is not kept whole (fade_planned) on a narrower screen
    (fade_icon_planned), the rest of its layout, the loading icon, is placed as the HUD's: at the screen's corner, at the HUD's
    size. Left where the 16:9 canvas has it, the icon was cut off at the right there, where the canvas at the HUD's size is

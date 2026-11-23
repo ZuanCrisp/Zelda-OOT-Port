@@ -3,7 +3,7 @@
 A tester's PC (a Steam Deck, an AMD, Intel or 8 GB card) can take a pull request's hardware test by itself, as a
 self-hosted GitHub Actions runner, instead of someone testing it by hand. It is
 opt-in, testing by hand stays the way for machines that are not always on, and a merge never waits for it. Idea and
-discussion: [#2797](https://github.com/NotRexed/Hookshot/issues/2797).
+discussion: [#2797](https://github.com/ZuanCrisp/Zelda-OOT-Port/issues/2797).
 
 A runner runs code from a pull request on someone's own PC, and that PC has their game dump on it. GitHub's own advice
 is that self-hosted runners should almost never serve a public repository, because anyone can open a pull request
@@ -17,11 +17,11 @@ pull request to test is a **test pull request opened on the fork itself** (its b
 upstream pull request), and the label goes on that test pull request. The workflows dispatch, check and report in the
 repository they run in, with that repository's token, so:
 
-- A `hardware:` label on a NotRexed/Hookshot pull request does not reach a fork's runner. This repository has no
+- A `hardware:` label on a ZuanCrisp/Zelda-OOT-Port pull request does not reach a fork's runner. This repository has no
   runners, so the gate leaves a notice and starts nothing.
 - Running the fork's `Hardware test` by hand with an upstream pull request's number does not bridge it either: it
   checks, fetches and reports that number in the fork.
-- Registering runners on NotRexed/Hookshot is not the fix (see the end of the next section).
+- Registering runners on ZuanCrisp/Zelda-OOT-Port is not the fix (see the end of the next section).
 
 Testing an upstream pull request automatically would need a relay that is authorized on both sides and keeps the
 repository that runs the test apart from the one that holds the pull request. That is not built, and waits on what the
@@ -57,7 +57,7 @@ The workflow gives the runner no token and checks nothing out on it. It calls on
 `HOOKSHOT_HW_SANDBOX` in the runner's `.env` file; without it the job fails before anything of the pull request runs:
 
 ```
-$HOOKSHOT_HW_SANDBOX --repo https://github.com/NotRexed/Hookshot --sha <40-character commit> --pr <number> --out <folder>
+$HOOKSHOT_HW_SANDBOX --repo https://github.com/ZuanCrisp/Zelda-OOT-Port --sha <40-character commit> --pr <number> --out <folder>
 ```
 
 The hardware name is in its environment as `HOOKSHOT_HW_HARDWARE`. That program is where the safety is. It must:

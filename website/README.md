@@ -36,7 +36,7 @@ compatibility source review, and the calculator and release-fetch behavior.
 | Variable | Default |
 |---|---|
 | `DOCS_SITE_URL` | `https://notrexed.github.io` |
-| `DOCS_SOURCE_REPOSITORY` | `NotRexed/Hookshot` |
+| `DOCS_SOURCE_REPOSITORY` | `ZuanCrisp/Zelda-OOT-Port` |
 | `DOCS_SOURCE_BRANCH` | `main` |
 
 The project path is `/Hookshot/`. Set the same environment for build and check when overriding hosting.
@@ -118,7 +118,7 @@ Activation requires Pages source **GitHub Actions** and allowing `main` in the `
 branch policy. The fork is enabled explicitly; other repositories must set the Actions repository variable
 `DOCS_PROGRESS_ENABLED=true`. Every run must originate from the default branch. It has no PR-triggered deployment.
 
-After this PR is approved and merged into `NotRexed/Hookshot:main`, maintainers can activate the same Action:
+After this PR is approved and merged into `ZuanCrisp/Zelda-OOT-Port:main`, maintainers can activate the same Action:
 
 1. Set Pages source to **GitHub Actions** and allow `main` in the `github-pages` environment.
 2. Set the Actions repository variable `DOCS_PROGRESS_ENABLED` to `true`.

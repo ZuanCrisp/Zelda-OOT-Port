@@ -11,7 +11,7 @@ const dist = path.join(site, 'dist');
 await verifyCompatibilitySources(path.join(site, '..'));
 const origin = siteConfig.origin;
 const base = siteConfig.base;
-const bug = 'https://github.com/NotRexed/Hookshot/issues/new/choose';
+const bug = 'https://github.com/ZuanCrisp/Zelda-OOT-Port/issues/new/choose';
 const files = [];
 async function walk(dir) {
   for (const item of await readdir(dir, { withFileTypes: true })) {
