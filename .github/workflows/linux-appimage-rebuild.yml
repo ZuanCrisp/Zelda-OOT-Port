@@ -7,17 +7,6 @@
 # one the nightly holds.
 name: Linux AppImage
 on:
-  push:
-    branches: [main]
-    tags: ['*']
-  # (not for a pull request that changes only documentation or the release manifest: nothing of them is compiled or
-  # packaged but readme.md, which is only copied in. A push to main builds every time)
-  pull_request:
-    paths-ignore:
-      - 'docs/**'
-      - '*.md'
-      - '.release-please-manifest.json'
-  workflow_dispatch:
   workflow_call:
     inputs:
       tag:
@@ -111,7 +100,7 @@ jobs:
           if ! grep -q '^LIB=' builder/linux/AppRun; then
             sed -i '/^HERE=/a LIB="$HERE/usr/lib/hookshot"' builder/linux/AppRun
           fi
-          grep -q '^LIB="$HERE/usr/lib/hookshot"
+          grep -Fq 'LIB="$HERE/usr/lib/hookshot"' builder/linux/AppRun
       # (a release builds what the AppImage carries from its checked downloads: no built deps from a cache, which other
       # runs write. Other runs take the built deps, without the downloads they were built from: deps.sh fetches only a
       # part it has not built (its .<part> marks), and the downloads were most of the cache, about 1.4 of 2.3 GB)
