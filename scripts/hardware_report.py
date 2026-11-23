@@ -12,7 +12,7 @@ import re
 import subprocess
 import sys
 
-REPO = "NotRexed/Hookshot"
+REPO = "ZuanCrisp/Zelda-OOT-Port"
 
 
 def section(body: str, name: str) -> str:

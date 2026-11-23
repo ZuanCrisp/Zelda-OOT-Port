@@ -106,7 +106,7 @@ since `rc.1`. There is no step to start a series: the first fix after a release 
 
 When a release candidate is good, start the Release workflow by hand on `main` (Actions > Release > Run workflow), with
 its tag (`v2.0.8-rc.2`), or empty for the newest release candidate. From the GitHub CLI:
-`gh workflow run release.yml -R NotRexed/Hookshot -f rc=v2.0.8-rc.2`.
+`gh workflow run release.yml -R ZuanCrisp/Zelda-OOT-Port -f rc=v2.0.8-rc.2`.
 
 Start it once. A Promote run is one at a time from its first job to its last, the builds and uploads included (the
 workflow's concurrency group): a second one started meanwhile waits, and once the first has published the version it
@@ -151,7 +151,7 @@ release". The release jobs of the Linux and Windows workflows never make a relea
 passed them: no draft there stops them.
 
 - **A tag has two releases** (a stray draft beside the published one, say): every script refuses it and names both ids.
-  Delete the one that is not meant (on its release page, or `gh api -X DELETE repos/NotRexed/Hookshot/releases/<id>`),
+  Delete the one that is not meant (on its release page, or `gh api -X DELETE repos/ZuanCrisp/Zelda-OOT-Port/releases/<id>`),
   then re-run the failed jobs.
 - **Promote says the version is already published**: it is. Nothing is built again; check that the record job ran
   (next item). A fix after it goes to the next release candidate.
@@ -259,7 +259,7 @@ To check a download, put it beside `SHA256SUMS` and run `sha256sum -c --ignore-m
 run that built it. With the GitHub CLI:
 
 ```
-gh attestation verify HookshotBuilder.exe -R NotRexed/Hookshot
+gh attestation verify HookshotBuilder.exe -R ZuanCrisp/Zelda-OOT-Port
 ```
 
 It passes only for a file built by this repository's workflows, and shows the commit and the run.

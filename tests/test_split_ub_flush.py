@@ -6,7 +6,7 @@ alone against a table; no game or GPU required.
 
 Written at each part's end, the draws of the later parts that read those ranges straight from guest memory saw a state an
 unsplit submission never shows: on Intel, white blocks and flashes in Kokiri Forest and white save thumbnails, and a
-whole-screen white flash every 8 frames on an Arc 140V (https://github.com/NotRexed/Hookshot/issues/999). flush_ub_updates writes the entries from
+whole-screen white flash every 8 frames on an Arc 140V (https://github.com/ZuanCrisp/Zelda-OOT-Port/issues/999). flush_ub_updates writes the entries from
 ub_first_of_recording on, so a part's end must neither write them nor move that index when it does not flush.
 
 python -I -B tests/test_split_ub_flush.py [--cxx g++]

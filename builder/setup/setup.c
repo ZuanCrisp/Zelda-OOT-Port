@@ -555,23 +555,23 @@ static int asset_from_json(const char *json, size_t len, const char *name, char 
     if (!at) return 0;
     const char *close = strchr(at, '}'), *url = strstr(at, "\"browser_download_url\"");
     return url && close && url < close && json_string_after(url + 22, end, out, n) &&
-           !strncmp(out, "https://git.notrexed.dev/", 25);
+           !strncmp(out, "https://github.com/", 19);
 }
 
 /* repo "owner/name", tag NULL for the latest release */
 static int api_asset_url(const char *repo, const char *tag, const char *name, char *out, int n) {
     char api[1024];
-    if (tag) snprintf(api, sizeof api, "https://git.notrexed.dev/api/v1/repos/%s/releases/tags/%s", repo, tag);
-    else snprintf(api, sizeof api, "https://git.notrexed.dev/api/v1/repos/%s/releases/latest", repo);
+    if (tag) snprintf(api, sizeof api, "https://api.github.com/repos/%s/releases/tags/%s", repo, tag);
+    else snprintf(api, sizeof api, "https://api.github.com/repos/%s/releases/latest", repo);
     Mem m = {0};
     const int found = http_get(api, mem_sink, &m, 0, L"application/vnd.github+json") && m.p && asset_from_json(m.p, m.n, name, out, n);
     free(m.p);
     return found;
 }
 
-/* https://git.notrexed.dev/<owner>/<repo>/releases/download/<tag>/<name> or .../releases/latest/download/<name> -> the link the API gives */
+/* https://github.com/<owner>/<repo>/releases/download/<tag>/<name> or .../releases/latest/download/<name> -> the link the API gives */
 static int api_link_for(const char *url, char *out, int n) {
-    static const char pre[] = "https://git.notrexed.dev/";
+    static const char pre[] = "https://github.com/";
     char repo[256], tag[256], name[260];
     if (strncmp(url, pre, sizeof pre - 1)) return 0;
     const char *p = url + sizeof pre - 1, *slash = strchr(p, '/');
@@ -672,8 +672,8 @@ static const char *manifest_url(void) {
     if (!tag[0] && HOOKSHOT_SETUP_RELEASE[0] && strlen(HOOKSHOT_SETUP_RELEASE) < sizeof tag) strcpy(tag, HOOKSHOT_SETUP_RELEASE);
     if (e && *e) snprintf(u, sizeof u, "%s", e);
     else if (tag[0])
-        snprintf(u, sizeof u, "https://git.notrexed.dev/Hookshot/Hookshot/releases/download/%s/hookshot-setup.txt", nightly_tag(tag) ? "nightly" : tag);
-    else snprintf(u, sizeof u, "%s", "https://git.notrexed.dev/Hookshot/Hookshot/releases/latest/download/hookshot-setup.txt");
+        snprintf(u, sizeof u, "https://github.com/ZuanCrisp/Zelda-OOT-Port/releases/download/%s/hookshot-setup.txt", nightly_tag(tag) ? "nightly" : tag);
+    else snprintf(u, sizeof u, "%s", "https://github.com/ZuanCrisp/Zelda-OOT-Port/releases/latest/download/hookshot-setup.txt");
     return u;
 }
 
@@ -726,10 +726,10 @@ static DWORD WINAPI work(LPVOID unused) {
     if (!ok)
         fail(g_http_status == 404
                  ? L"The latest Hookshot release has no setup files yet. Download HookshotBuilder.zip from the releases page for now: "
-                   L"https://git.notrexed.dev/Hookshot/Hookshot/releases/latest"
+                   L"https://github.com/ZuanCrisp/Zelda-OOT-Port/releases/latest"
              : g_http_status ? L"The download server is failing right now (an error 500 or above, tried 8 times over 3 minutes). "
                                L"This is on the server's side: try again in a few minutes, or later today."
-                             : L"Could not reach git.notrexed.dev to get the Hookshot Builder. Check your internet connection and try again.");
+                             : L"Could not reach github.com to get the Hookshot Builder. Check your internet connection and try again.");
 
     char tag[128] = "", run[260] = "";
     Part parts[MAX_PARTS];

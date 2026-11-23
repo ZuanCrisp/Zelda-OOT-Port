@@ -207,7 +207,7 @@ public partial class MainWindow : Window
             case Mode.UpToDate:
                 FilesTitle.Text = "Your game is up to date";
                 FilesSub.Text = latestTag == null
-                    ? $"Your game is {game}, as this builder. git.notrexed.dev did not answer, so newer versions could not be checked."
+                    ? $"Your game is {game}, as this builder. github.com did not answer, so newer versions could not be checked."
                     : $"{game} is the latest version. Pick game files below only to build it again from scratch.";
                 BuildButton.Content = "Play";
                 break;
@@ -247,7 +247,7 @@ public partial class MainWindow : Window
         ShowPage(LaunchPage);
         latestTag = Environment.GetEnvironmentVariable("HOOKSHOT_LATEST_TAG") is { Length: > 0 } fake ? (fake == "none" ? null : fake) : await Updater.LatestTag(Track);
         updateTarget = Updater.Target(latestTag, Tools.Find()?.Version, Track);   // (GitHub's newest, else this builder's own)
-        if (updateTarget == null) LaunchStatus.Text = "Could not check for updates (git.notrexed.dev did not answer)";
+        if (updateTarget == null) LaunchStatus.Text = "Could not check for updates (github.com did not answer)";
         else if (game != null && game != updateTarget && GameVersion(folder) != null)
         {
             LaunchStatus.Text = $"Update available: {updateTarget}";
@@ -257,7 +257,7 @@ public partial class MainWindow : Window
         }
         else if (game != null && game != updateTarget)
             LaunchStatus.Text = $"{updateTarget} is out: build this folder again with the Hookshot Builder to get it";
-        else LaunchStatus.Text = latestTag == null ? "Up to date with this builder (git.notrexed.dev did not answer)" : "Up to date";
+        else LaunchStatus.Text = latestTag == null ? "Up to date with this builder (github.com did not answer)" : "Up to date";
     }
 
     /// (a folder built before it kept its game files has a version too: only shown)
@@ -337,7 +337,7 @@ public partial class MainWindow : Window
     // ---- Save my pipeline list: the game folder's pipeline list and the "Submit your pipelines" issue's template, filled in,
     // zipped into the Downloads folder by nx2/pipeline_share.py (as the Linux builder and the game's menu do), then the template
     // on the clipboard, the zip shown in its folder and the issue opened. Nothing is uploaded: the player attaches the zip ----
-    const string ShareIssue = "https://github.com/NotRexed/Hookshot/issues/2034";
+    const string ShareIssue = "https://github.com/ZuanCrisp/Zelda-OOT-Port/issues/2034";
 
     async void LaunchShareClick(object sender, RoutedEventArgs e)
     {
@@ -862,7 +862,7 @@ public partial class MainWindow : Window
             case Mode.UpdateGame:   // (the kept game files; the newer builder first when this one is older)
                 if (!OlderOk(GameVersion(OutPath.Text))) return;
                 SaveSettings();
-                // (an up-to-date game built again for an upscaler it lacks: its own version, also when git.notrexed.dev did not answer)
+                // (an up-to-date game built again for an upscaler it lacks: its own version, also when github.com did not answer)
                 Updater.UpdateFolder(this, OutPath.Text, updateTarget ?? GameVersion(OutPath.Text), fetched: false, named: Switching);
                 return;
             case Mode.UpToDate:
@@ -1439,7 +1439,7 @@ public partial class MainWindow : Window
             Application.Current.Shutdown();
             return;
         }
-        Process.Start(new ProcessStartInfo("https://git.notrexed.dev/Hookshot/Hookshot/releases/latest") { UseShellExecute = true });
+        Process.Start(new ProcessStartInfo("https://github.com/ZuanCrisp/Zelda-OOT-Port/releases/latest") { UseShellExecute = true });
     }
 
     // ================= the update (Updater.cs): the game started this app with --update <folder> =================
