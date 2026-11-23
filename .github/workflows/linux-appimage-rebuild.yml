@@ -104,14 +104,6 @@ jobs:
       - name: Trust the checkout
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
-      # The release tags' AppRun uses LIB to locate its bundled compiler and libraries.
-      # It was never initialized, so EMSDK became /emsdk and every player's build failed.
-      - name: Set the AppImage runtime library directory
-        run: |
-          if ! grep -q '^LIB=' builder/linux/AppRun; then
-            sed -i '/^HERE=/a LIB="$HERE/usr/lib/hookshot"' builder/linux/AppRun
-          fi
-          grep -Fq 'LIB="$HERE/usr/lib/hookshot"' builder/linux/AppRun
       # (a release builds what the AppImage carries from its checked downloads: no built deps from a cache, which other
       # runs write. Other runs take the built deps, without the downloads they were built from: deps.sh fetches only a
       # part it has not built (its .<part> marks), and the downloads were most of the cache, about 1.4 of 2.3 GB)
@@ -186,7 +178,13 @@ jobs:
           HOOKSHOT_UPDATE_RELEASE: >-
             ${{ env.RELEASE_TAG == '' && github.event_name == 'push' && github.ref == 'refs/heads/main' && 'nightly'
             || contains(env.RELEASE_TAG, '-') && 'rc' || 'latest' }}
-        run: scripts/linux/appimage.sh
+        run: |
+          # AppRun needs LIB to find the bundled compiler, sysroot, FFmpeg and SDL2 libraries.
+          if ! grep -q '^LIB=' builder/linux/AppRun; then
+            sed -i '/^HERE=/a LIB="$HERE/usr/lib/hookshot"' builder/linux/AppRun
+          fi
+          grep -Fq 'LIB="$HERE/usr/lib/hookshot"' builder/linux/AppRun
+          scripts/linux/appimage.sh
 
       # (the object cache down to the objects this build used, as nx2/make_game.py prune_object_cache does: each object in
       # sa/build/obj names its key in <obj>.sha1. Nothing goes when no stamp is found)
