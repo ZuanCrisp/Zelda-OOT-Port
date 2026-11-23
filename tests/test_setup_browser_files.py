@@ -1,5 +1,5 @@
 """The setup takes files the player downloaded with a browser (builder/setup/setup.c browser_file), for players whose setup
-could not reach git.notrexed.dev while a browser could (2026-11-15: "not able to connect, even with WARP or a VPN"). Checked by
+could not reach github.com while a browser could (2026-11-15: "not able to connect, even with WARP or a VPN"). Checked by
 source here (an end-to-end run, the list's and a part's links unreachable, installed v2.3.1 from the saved files on
 2026-11-15):
 
@@ -26,7 +26,7 @@ def main():
     for need in ("SHGetKnownFolderPath(&downloads_id", "GetModuleFileNameW(NULL, dirs[n], MAX_PATH)",
                  "CompareFileTime(&d.ftLastWriteTime, &best) > 0", 'L"%ls\\\\%ls"'):
         assert need in find, "browser_file: " + need
-    assert '#define MANUAL_PAGE L"https://hookshot.notrexed.dev/manual"' in src
+    assert '#define MANUAL_PAGE L"https://github.com/ZuanCrisp/Zelda-OOT-Port/releases/latest"' in src
     assert 'int have_saved = browser_file("hookshot-setup.txt", saved_list);' in src and '7ull * 24 * 3600 * 10000000ull) have_saved = 0;' in src
     assert "attempt < (have_saved ? 1 : TRIES)" in src
     assert "if (!ok && have_saved) {" in src and "ok = read_whole(saved_list, &man);" in src

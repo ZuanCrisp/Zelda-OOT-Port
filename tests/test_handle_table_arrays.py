@@ -5,8 +5,8 @@ OoT's clustered lights sample each light's shadow map with a handle read per pix
 the pixel's list, then the light's 96-byte entry). The translation now makes that a descriptor array of the table's first
 entries, whose handle program computes entry k's handle (HandleOp::Index), and the shader indexes the array per pixel.
 Before, the samples took the light table's address word for the handle and bound no texture: the lights' shadow tests read
-nothing (dark and green blocks on Zora's Domain's ice and snow, https://git.notrexed.dev/Hookshot/Hookshot/issues/52,
-https://github.com/NotRexed/Hookshot/issues/2509).
+nothing (dark and green blocks on Zora's Domain's ice and snow, https://github.com/ZuanCrisp/Zelda-OOT-Port/issues/52,
+https://github.com/ZuanCrisp/Zelda-OOT-Port/issues/2509).
 
 Built from the sources' own text: shader_info.h's HandleOp and EvaluateHandleProgram, texture_pass.cpp's TrimTrailingTees,
 vk_shader.cpp's stage_handle / stage_handles, with stubs for the banks and memory; then checks of the code that has no

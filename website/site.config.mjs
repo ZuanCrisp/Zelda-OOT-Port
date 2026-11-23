@@ -3,7 +3,7 @@ export function getSiteConfig(env = process.env) {
   if (origin.protocol !== 'https:' || origin.pathname !== '/' || origin.search || origin.hash) {
     throw new Error('DOCS_SITE_URL must be an HTTPS origin, without a path, query, or fragment.');
   }
-  const repository = env.DOCS_SOURCE_REPOSITORY || 'NotRexed/Hookshot';
+  const repository = env.DOCS_SOURCE_REPOSITORY || 'ZuanCrisp/Zelda-OOT-Port';
   if (!/^[\w.-]+\/[\w.-]+$/.test(repository)) throw new Error('Invalid DOCS_SOURCE_REPOSITORY.');
   const branch = env.DOCS_SOURCE_BRANCH || 'main';
   const ref = branch.split('/').map(encodeURIComponent).join('/');

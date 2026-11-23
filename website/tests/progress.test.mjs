@@ -91,7 +91,7 @@ test('search combines query terms and every filter, including source numbers and
 
 test('feed validation rejects unsafe URLs, duplicate IDs and malformed records', () => {
   validateFeed(feed());
-  for (const url of ['javascript:alert(1)', 'https://github.com.evil/NotRexed/Hookshot/issues/1', `${ROOT}/issues/2`, 'https://github.com/NotRexed/Hookshot/pull/1']) {
+  for (const url of ['javascript:alert(1)', 'https://github.com.evil/ZuanCrisp/Zelda-OOT-Port/issues/1', `${ROOT}/issues/2`, 'https://github.com/ZuanCrisp/Zelda-OOT-Port/pull/1']) {
     const data = feed(); data.items[0].url = url;
     assert.throws(() => validateFeed(data));
   }
@@ -130,7 +130,7 @@ test('collector paginates open items, stops old closed history and keeps PRs sep
 test('failed or truncated collection never returns a partial feed', async () => {
   await assert.rejects(collectFeed({ fetcher: async url => url.endsWith('/latest') ? response(release) : response({}, 503) }));
   await assert.rejects(collectFeed({ maxPages: 1, now: Date.parse(time), fetcher: async url => url.endsWith(REPOSITORY) ? response(repository) : url.endsWith('/latest') ? response(release) : response(Array.from({ length: 100 }, (_, i) => raw(i + 1)), 200,
-    { link: '<https://api.github.com/repos/NotRexed/Hookshot/issues?state=closed&after=cursor>; rel="next"' }) }), /pagination limit/);
+    { link: '<https://api.github.com/repos/ZuanCrisp/Zelda-OOT-Port/issues?state=closed&after=cursor>; rel="next"' }) }), /pagination limit/);
 });
 
 test('pagination never forwards the token to another host or endpoint', async () => {

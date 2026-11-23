@@ -7,9 +7,9 @@
 #
 # For now this is a fork-local pilot: the label, the pull request and the runner are all on one tester's fork (a test
 # pull request opened on the fork itself). The dispatch, the check and the report use the token of the repository the
-# workflow runs in, so a label on NotRexed/Hookshot cannot start a run on a fork's runner; testing an upstream pull
+# workflow runs in, so a label on ZuanCrisp/Zelda-OOT-Port cannot start a run on a fork's runner; testing an upstream pull
 # request automatically would need a relay with its own authorization, which this does not have. Registering runners
-# on NotRexed/Hookshot is not the fix (docs/hardware-runners.md says why). A repository only dispatches for the
+# on ZuanCrisp/Zelda-OOT-Port is not the fix (docs/hardware-runners.md says why). A repository only dispatches for the
 # hardware names listed in its HOOKSHOT_HW_RUNNERS variable; without it a label only leaves a notice.
 name: Hardware test gate
 

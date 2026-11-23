@@ -25,7 +25,7 @@ function urlFor(value, source) {
   const resolved = path.posix.normalize(path.posix.join(path.posix.dirname(source), pathname));
   if (pages.has(resolved)) return base + (pages.get(resolved) ? `${pages.get(resolved)}/` : '') + fragment;
   if (publicAssets.has(resolved)) return base + resolved + fragment;
-  return `https://github.com/NotRexed/Hookshot/blob/main/${resolved}${fragment}`;
+  return `https://github.com/ZuanCrisp/Zelda-OOT-Port/blob/main/${resolved}${fragment}`;
 }
 await rm(out, { recursive: true, force: true });
 await mkdir(out, { recursive: true });

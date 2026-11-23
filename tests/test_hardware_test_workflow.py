@@ -108,7 +108,7 @@ class Workflows(unittest.TestCase):
             self.assertIn("Fork-local pilot" if text is self.test else "fork-local pilot", text)
         self.assertIn("RUNNERS: ${{ vars.HOOKSHOT_HW_RUNNERS }}", self.gate)
         doc = (ROOT / "docs" / "hardware-runners.md").read_text(encoding="utf-8")
-        for promise in ("test pull request opened on the fork itself", "Registering runners on NotRexed/Hookshot is "
+        for promise in ("test pull request opened on the fork itself", "Registering runners on ZuanCrisp/Zelda-OOT-Port is "
                         "not the fix", "again before taking the GPU", "only regular files",
                         "the runner keeps its own session and artifact credentials", "`HOOKSHOT_HW_RUNNERS`",
                         "Runners are Linux"):
@@ -208,14 +208,14 @@ class Steps(unittest.TestCase):
             self.assertEqual(log, "", label)
 
     def test_a_repository_without_that_runner_only_leaves_a_notice(self):
-        # (NotRexed/Hookshot has no runners: the pilot is on a tester's fork)
+        # (ZuanCrisp/Zelda-OOT-Port has no runners: the pilot is on a tester's fork)
         for runners in ("", "steam-deck-oled", "nvidia-8gb steam"):
             r, log, _, _ = self.run_step(self.gate_dispatch(), {"LABEL": "hardware: steam-deck", "PR": "1",
                                                                 "SHA": "b" * 40, "BRANCH": "main",
-                                                                "RUNNERS": runners, "GH_REPO": "NotRexed/Hookshot"})
+                                                                "RUNNERS": runners, "GH_REPO": "ZuanCrisp/Zelda-OOT-Port"})
             self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
             self.assertEqual(log, "", runners)
-            self.assertIn("::notice::NotRexed/Hookshot has no \"steam-deck\" runner", r.stdout)
+            self.assertIn("::notice::ZuanCrisp/Zelda-OOT-Port has no \"steam-deck\" runner", r.stdout)
             self.assertIn("fork", r.stdout)
 
     def gate_unlabel(self):
