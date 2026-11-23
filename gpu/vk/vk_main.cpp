@@ -644,7 +644,7 @@ bool create_device() {
     if (dev.mesh_fallback) logf("vk: no mesh shaders: task and mesh programs run as compute shaders (issue 640 fallback)");
     bool task_mesh_fallback = false;
 #ifdef _WIN32
-    // (https://github.com/NotRexed/Hookshot/issues/996) AMD's RDNA 2 cards, Navi 21 to 23, can time out on task + mesh draws
+    // (https://github.com/ZuanCrisp/Zelda-OOT-Port/issues/996) AMD's RDNA 2 cards, Navi 21 to 23, can time out on task + mesh draws
     // in the Windows driver: mesh_mode.h
     task_mesh_fallback = mesh_rule::task_mesh_fallback_default(dev.props.vendorID, dev.props.deviceID);
 #endif
@@ -1708,7 +1708,7 @@ void device_lost_notice() {
     std::thread([name = std::string(dev.props.deviceName)] {
         const std::string text = "The graphics card (" + name + ") stopped responding to Hookshot (Vulkan: device lost), so the "
             "picture will stay black. The game cannot recover from this: close it and start it again.\n\nIf it happens again at "
-            "the same place, please open an issue at git.notrexed.dev/Hookshot/Hookshot and attach hookshot_log.txt from the game folder.";
+            "the same place, please open an issue at github.com/ZuanCrisp/Zelda-OOT-Port and attach hookshot_log.txt from the game folder.";
         MessageBoxA(nullptr, text.c_str(), "Hookshot: graphics card stopped", MB_OK | MB_ICONERROR | MB_TOPMOST);
     }).detach();
 #endif

@@ -298,7 +298,7 @@ def read(args):
     config = session()
     alias = args.room or config.get("room", ROOM)
     rid = room_id(config, alias)
-    path = "/rooms/%s/messages?dir=b&limit=%d" % (quote(rid), max(1, min(args.limit, 200)))
+    path = "/rooms/%s/messages?dir=b&per_page=%d" % (quote(rid), max(1, min(args.limit, 200)))
     events = request("GET", client(config["base_url"], path), config["access_token"]).get("chunk", [])
     for event in reversed(events):
         content = event.get("content", {})

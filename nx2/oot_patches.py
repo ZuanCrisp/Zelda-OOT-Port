@@ -502,7 +502,7 @@ def patch_movie_frames(s):
 #   the same recording. Its unsigned cut must carry too, or the saved eighth note has zero length and is not played.
 # - f_80652cb0, the floor web (the Great Deku Tree's): it runs (int)step simulation steps a frame, clamped to 0..3.
 #   Cut to 0, the web stayed rigid when Link landed on it above 60 fps, though it still held him
-#   (https://github.com/NotRexed/Hookshot/issues/2667). Its remainder is kept per web (+2296), before the clamp.
+#   (https://github.com/ZuanCrisp/Zelda-OOT-Port/issues/2667). Its remainder is kept per web (+2296), before the clamp.
 # hos_frame_whole carries the fractions per counter while the frames' own time is the step, so each moves at the game's rate;
 # otherwise it cuts as the game does. A site is added here once it is seen to misbehave in game. (A site's function, its code to
 # replace, and the counter's address for its remainder.)
