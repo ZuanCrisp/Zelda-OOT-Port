@@ -1,5 +1,5 @@
 import { reportEvidence } from './progress-watch.mjs';
-export const REPOSITORY = 'NotRexed/Hookshot';
+export const REPOSITORY = 'ZuanCrisp/Zelda-OOT-Port';
 export const ROOT = `https://github.com/${REPOSITORY}`;
 export const REFRESH_MS = 5 * 60 * 1000;
 export const AREAS = ['Graphics', 'Performance', 'Crashes or startup', 'Sound, controls or saves', 'Controls', 'Audio', 'Setup', 'Documentation'];

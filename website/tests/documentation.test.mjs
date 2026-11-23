@@ -7,7 +7,7 @@ import { assertReviewedSources } from '../scripts/verify-compatibility-sources.m
 test('hosting defaults to upstream and supports fork preview overrides', () => {
   const upstream = getSiteConfig({});
   assert.equal(upstream.origin, 'https://notrexed.github.io');
-  assert.equal(upstream.editBase, 'https://github.com/NotRexed/Hookshot/edit/main/');
+  assert.equal(upstream.editBase, 'https://github.com/ZuanCrisp/Zelda-OOT-Port/edit/main/');
   const fork = getSiteConfig({ DOCS_SITE_URL: 'https://bibigurl-yum.github.io', DOCS_SOURCE_REPOSITORY: 'bibigurl-yum/Hookshot', DOCS_SOURCE_BRANCH: 'docs/starlight-preview' });
   assert.equal(fork.editBase, 'https://github.com/bibigurl-yum/Hookshot/edit/docs/starlight-preview/');
   assert.throws(() => getSiteConfig({ DOCS_SITE_URL: 'https://example.com/subdirectory' }));
