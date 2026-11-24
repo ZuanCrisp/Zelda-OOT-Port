@@ -121,6 +121,24 @@ jobs:
         with:
           ref: ${{ matrix.tag }}
           persist-credentials: false
+      - name: Remove stale cross-version Linux AppImage assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh release view "$TAG" --json assets --jq '.assets[].name' > "$RUNNER_TEMP/release-assets.txt"
+          while IFS= read -r asset; do
+            case "$asset" in
+              Hookshot-v*-x86_64.AppImage|Hookshot-v*-x86_64.AppImage.zsync)
+                expected_app="Hookshot-$TAG-x86_64.AppImage"
+                expected_zsync="${expected_app}.zsync"
+                if [[ "$asset" != "$expected_app" && "$asset" != "$expected_zsync" ]]; then
+                  echo "::notice::Removing stale Linux asset $asset from $TAG"
+                  gh release delete-asset "$TAG" "$asset" --yes
+                fi
+                ;;
+            esac
+          done < "$RUNNER_TEMP/release-assets.txt"
+
       - name: Refresh combined SHA256SUMS
         run: bash scripts/release_files.sh finish "$TAG"
       - name: Verify Windows and Linux release assets and checksums

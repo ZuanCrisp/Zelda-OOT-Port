@@ -108,6 +108,32 @@ jobs:
       - name: Trust the checkout
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
+      # v3.0.0 still uses the POSIX GDI shim removed before its item wheel was added.
+      # Backport only upstream's v3.0.1 Linux text-renderer fix into this Linux build workspace.
+      # The release tag itself and the separate Windows workflow remain unchanged.
+      - name: Backport Linux item-wheel text renderer for v3.0.0
+        if: inputs.tag == 'v3.0.0' || (startsWith(github.ref, 'refs/tags/') && github.ref_name == 'v3.0.0')
+        shell: bash
+        run: |
+          set -euo pipefail
+          source_ref=v3.0.1
+          git rev-parse --verify "refs/tags/$source_ref^{commit}" >/dev/null
+          for path in \
+            gpu/vk/vk_wheel.cpp \
+            gpu/vk/vk_wheel_text.h \
+            nx2/build.py \
+            tests/test_wheel_text.cpp \
+            tests/test_wheel_text.py
+          do
+            mkdir -p "$(dirname "$path")"
+            git show "$source_ref:$path" > "$path"
+          done
+          test -f third_party/imgui/imstb_truetype.h
+          test -f third_party/imgui/imstb_rectpack.h
+          python3 -I -B tests/test_wheel_text.py --cxx g++
+          git diff --check
+          echo "::notice::Applied upstream v3.0.1 POSIX item-wheel text fix to the Linux-only v3.0.0 build workspace"
+
       # (a release builds what the AppImage carries from its checked downloads: no built deps from a cache, which other
       # runs write. Other runs take the built deps, without the downloads they were built from: deps.sh fetches only a
       # part it has not built (its .<part> marks), and the downloads were most of the cache, about 1.4 of 2.3 GB)
@@ -211,6 +237,17 @@ jobs:
           grep -Fq 'LIB="$HERE/usr/lib/hookshot"' builder/linux/AppRun
           scripts/linux/appimage.sh
 
+      # AppImageUpdate/Gear Lever reads this stable URL; keep it byte-for-byte aligned with this build's versioned .zsync.
+      - name: Create stable AppImageUpdate metadata alias
+        if: env.RELEASE_TAG != ''
+        shell: bash
+        run: |
+          set -euo pipefail
+          source="build-linux/Hookshot-${RELEASE_TAG}-x86_64.AppImage.zsync"
+          test -s "$source"
+          cp "$source" build-linux/Hookshot-x86_64.AppImage.zsync
+          cmp -s "$source" build-linux/Hookshot-x86_64.AppImage.zsync
+
       # (the object cache down to the objects this build used, as nx2/make_game.py prune_object_cache does: each object in
       # sa/build/obj names its key in <obj>.sha1. Nothing goes when no stamp is found)
       - name: Object cache for pull requests
@@ -260,7 +297,7 @@ jobs:
 
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          name: Hookshot-linux-x86_64
+          name: Hookshot-linux-x86_64-${{ inputs.tag || github.run_id }}
           path: |
             build-linux/*.AppImage
             build-linux/*.AppImage.zsync
@@ -277,7 +314,7 @@ jobs:
       - if: env.RELEASE_TAG != '' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          name: Hookshot-linux-parts
+          name: Hookshot-linux-parts-${{ inputs.tag || github.run_id }}
           path: build-linux/parts/
           if-no-files-found: error
 
@@ -312,12 +349,41 @@ jobs:
           persist-credentials: false
       - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
-          name: Hookshot-linux-x86_64
+          name: Hookshot-linux-x86_64-${{ inputs.tag || github.run_id }}
           path: dist
       - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
-          name: Hookshot-linux-parts
+          name: Hookshot-linux-parts-${{ inputs.tag || github.run_id }}
           path: dist/parts
+      - name: Verify downloaded AppImage and updater metadata match this release
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected_app="Hookshot-${RELEASE_TAG}-x86_64.AppImage"
+          expected_zsync="${expected_app}.zsync"
+          generic_zsync="Hookshot-x86_64.AppImage.zsync"
+          mapfile -t appimages < <(find dist -maxdepth 1 -type f -name 'Hookshot-v*-x86_64.AppImage' -print | sed 's#^.*/##' | sort)
+          if (( ${#appimages[@]} != 1 )); then
+            echo "::error::Expected exactly one versioned AppImage, found ${#appimages[@]}"
+            exit 1
+          fi
+          if [[ "${appimages[0]}" != "$expected_app" ]]; then
+            echo "::error::Wrong AppImage artifact: ${appimages[0]} (expected $expected_app)"
+            exit 1
+          fi
+          for name in "$expected_app" "$expected_zsync" "$generic_zsync"; do
+            test -s "dist/$name" || { echo "::error::Missing or empty release artifact: $name"; exit 1; }
+          done
+          cmp -s "dist/$expected_zsync" "dist/$generic_zsync" || {
+            echo "::error::Generic AppImageUpdate .zsync does not match $RELEASE_TAG"
+            exit 1
+          }
+          file "dist/$expected_app" | grep -Eq 'ELF 64-bit.*x86-64' || {
+            echo "::error::AppImage is not an x86_64 ELF executable"
+            exit 1
+          }
+          echo "::notice::Verified $RELEASE_TAG AppImage and matching zsync metadata"
+
       # (the parts to the linux-parts release, which is never "latest"; a part already there is not uploaded again)
       - name: Update parts
         run: scripts/linux/publish_parts.sh dist/parts
