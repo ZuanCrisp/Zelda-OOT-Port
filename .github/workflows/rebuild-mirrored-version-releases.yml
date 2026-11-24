@@ -6,6 +6,8 @@ on:
       - dev/self-hosted-release
 
 permissions:
+  actions: read
+  artifact-metadata: write
   contents: write
   id-token: write
   attestations: write
@@ -21,6 +23,8 @@ jobs:
     with:
       tag: v2.3.0
     permissions:
+      actions: read
+      artifact-metadata: write
       contents: write
       id-token: write
       attestations: write
@@ -32,6 +36,8 @@ jobs:
     with:
       tag: v2.3.1
     permissions:
+      actions: read
+      artifact-metadata: write
       contents: write
       id-token: write
       attestations: write
@@ -43,6 +49,8 @@ jobs:
     with:
       tag: v2.3.2
     permissions:
+      actions: read
+      artifact-metadata: write
       contents: write
       id-token: write
       attestations: write
@@ -54,6 +62,8 @@ jobs:
     with:
       tag: v3.0.0
     permissions:
+      actions: read
+      artifact-metadata: write
       contents: write
       id-token: write
       attestations: write
@@ -65,6 +75,8 @@ jobs:
     with:
       tag: v3.0.1
     permissions:
+      actions: read
+      artifact-metadata: write
       contents: write
       id-token: write
       attestations: write
@@ -76,6 +88,8 @@ jobs:
     with:
       tag: v3.0.2
     permissions:
+      actions: read
+      artifact-metadata: write
       contents: write
       id-token: write
       attestations: write
